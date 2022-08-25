@@ -1088,7 +1088,7 @@ namespace FindIt.GUI
                     return false;
                 }
 
-                if (targetAsset.assetType == Asset.AssetType.Ploppable)
+                if (targetAsset.assetType != Asset.AssetType.Ploppable)
                 {
                     if (!UIFilterGrowable.instance.IsSelected(UIFilterGrowable.GetCategory(buildingInfo.m_class)))
                     {

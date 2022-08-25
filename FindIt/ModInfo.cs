@@ -12,36 +12,13 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.8.3-beta7";
-        public const bool isBeta = true;
+        public const string version = "2.8.4";
+        public const bool isBeta = false;
         public const bool debug = false;
-        public const double updateNoticeDate = 20220805;
+        public const double updateNoticeDate = 20220824;
         public const string updateNotice =
 
-            "- Add an option to allow assets creators to define and hide dependency assets (disabled by default)\n\n" +
-
-            "If enabled, assets with creator_hidden or #creator_hidden in the description will be excluded from future search results\n" +
-            "These assets are always accessible under the creator_hidden option in the extra filters panel\n";
-
-        //"- Add a special custom tag \"hidden\" \n\n" +
-
-        //"  Assets tagged as hidden will be hidden from future search\n" +
-        //"  You can use this tag to hide dependency assets\n" +
-        //"  Use the custom tag panel to see assets tagged as hidden\n" +
-        //"  Remove the hidden tag to make the assets appear again\n\n" +
-
-        //"- Minor UI tweaks & update translations\n";
-
-
-        //"- New search filter: District Style\n\n" +
-
-        //" You can find this filter in the extra filters panel\n" +
-        //" It can be used to find buildings from a specific district style\n" +
-        //" Remember to enable district styles in the content manager\n\n" +
-
-        //"- Adjust asset creators counter to exclude sub-buildings\n\n" + 
-
-        //"- Update translations\n";
+            "- Fix bug that could cause the Picker mod to fail to pick up growables and ploppables in some cases\n\n";
 
         public string Name
         {
