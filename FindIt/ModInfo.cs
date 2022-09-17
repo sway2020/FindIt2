@@ -38,6 +38,7 @@ namespace FindIt
         "- Show icons of the new DLC & CCPs on asset thumbnails\n\n" +
 
         "- UI changes\n";
+        
 
         public string Name
         {
