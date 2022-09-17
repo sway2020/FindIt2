@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -135,10 +137,6 @@
     <EmbeddedResource Include="Icons\Tag.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Icons\ZoningCommercialEco.png" />
-    <EmbeddedResource Include="Icons\ZoningCommercialLeisure.png" />
-    <EmbeddedResource Include="Icons\ZoningCommercialTourist.png" />
-    <EmbeddedResource Include="Icons\ZoningOfficeHightech.png" />
     <EmbeddedResource Include="Icons\ZoningResidentialHighEco.png" />
     <EmbeddedResource Include="Icons\ZoningResidentialLowEco.png" />
   </ItemGroup>
@@ -170,6 +168,9 @@
     <EmbeddedResource Include="Icons\Refresh.png" />
     <EmbeddedResource Include="Icons\Locate.png" />
     <EmbeddedResource Include="Icons\NewTab.png" />
+    <EmbeddedResource Include="Icons\Recent.png" />
+    <EmbeddedResource Include="Icons\Relevance.png" />
+    <EmbeddedResource Include="Icons\SortToggle.png" />
     <Content Include="Libraries\EManagersLib.API.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -194,7 +195,6 @@
     <None Include="Translations\zh-tw.csv" />
     <None Include="Translations\zh.csv" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

@@ -2,20 +2,20 @@
 // https://github.com/SamsamTS/CS-FindIt
 // main backend class
 
-using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
 using ColossalFramework;
-using ColossalFramework.PlatformServices;
-using ColossalFramework.Packaging;
-using FindIt.GUI;
-using System.Reflection;
 using ColossalFramework.Globalization;
 using ColossalFramework.IO;
+using ColossalFramework.Packaging;
+using ColossalFramework.PlatformServices;
 using EManagersLib.API;
+using FindIt.GUI;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace FindIt
 {
@@ -332,9 +332,10 @@ namespace FindIt
 
                     // filter out network assets that are not supposed to be used by players directly
                     else if (netPrefab.category == PrefabInfo.kDefaultCategory || netPrefab.m_Thumbnail.IsNullOrWhiteSpace() ||
+                        (netPrefab.m_dlcRequired == SteamHelper.DLC_BitMask.PlazasAndPromenadesDLC && (netPrefab.name.EndsWith("Elevated") || (netPrefab.name.EndsWith("Bridge")))) ||
                         (netPrefab.name != "Pedestrian Pavement" && netPrefab.m_Thumbnail == "ThumbnailBuildingBeautificationPedestrianPavement"))
                     {
-                        // filtered += prefab.name + ", ";
+                        filtered += prefab.name + ", ";
                         continue;
                     }
                 }
@@ -363,7 +364,7 @@ namespace FindIt
             if (!filtered.IsNullOrWhiteSpace())
             {
                 filtered = filtered.Remove(filtered.Length - 2);
-                // Debugging.Message("Filtered " + typeof(T) + ": " + filtered);
+                Debugging.Message("Filtered " + typeof(T) + ": " + filtered);
             }
         }
 

@@ -1,21 +1,21 @@
-﻿using System;
+﻿using ColossalFramework;
+using ColossalFramework.PlatformServices;
+using ColossalFramework.UI;
+using FindIt.GUI;
+using HarmonyLib;
+using System;
 using System.Reflection;
 using UnityEngine;
-using ColossalFramework;
-using ColossalFramework.UI;
-using ColossalFramework.PlatformServices;
-using HarmonyLib;
-using FindIt.GUI;
 
 namespace FindIt
 {
     // This patch adds some of Find It's own UI stuff (like the custom tag and steam sprites) to the game's default panels
     [HarmonyPatch(typeof(GeneratedScrollPanel))]
     [HarmonyPatch("CreateButton")]
-    [HarmonyPatch(new Type[] { typeof(string), typeof(string), typeof(string), typeof(int), typeof(UITextureAtlas), typeof(UIComponent), typeof(bool) })]
+    [HarmonyPatch(new Type[] { typeof(string), typeof(string), typeof(string), typeof(int), typeof(UITextureAtlas), typeof(UIComponent), typeof(bool), typeof(UITextureAtlas), typeof(string) })]
     internal static class CreateButtonPatch
     {
-        private static void Postfix(UIButton __result, GeneratedScrollPanel __instance, string name, string tooltip, string baseIconName, int index, UITextureAtlas atlas, UIComponent tooltipBox, bool enabled)
+        private static void Postfix(UIButton __result, GeneratedScrollPanel __instance, string name, string tooltip, string baseIconName, int index, UITextureAtlas atlas, UIComponent tooltipBox, bool enabled, UITextureAtlas badgeAtlas, string badgeSpriteName)
         {
             if (Settings.hideExtraUIonVP) return;
 

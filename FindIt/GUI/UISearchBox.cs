@@ -2,20 +2,22 @@
 // https://github.com/SamsamTS/CS-FindIt
 // main UI class
 
-using UnityEngine;
 using ColossalFramework;
 using ColossalFramework.DataBinding;
 using ColossalFramework.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
     // Check Picker mod's code before changing the accessibility of some data members to private, or it may break Picker mod's current reflection code
     public class UISearchBox : UIPanel
     {
+#pragma warning disable CA2211 // Non-constant fields should not be visible
         public static UISearchBox instance;
+#pragma warning restore CA2211 // Non-constant fields should not be visible
 
         public UIPanel inputPanel;
         public UITextField input;
@@ -42,7 +44,7 @@ namespace FindIt.GUI
 
         public UICheckBox workshopFilter;
         public UICheckBox vanillaFilter;
-        private UIButton sortButton;
+        private UICheckBox sortToggle;
 
         private UISprite refreshDisplayIcon;
         private UISprite locateInstanceIcon;
@@ -74,10 +76,10 @@ namespace FindIt.GUI
         }
 
         // building filter sizes
-        private string[] filterItemsGrowable = { Translations.Translate("FIF_SE_IA"), "1", "2", "3", "4" };
-        private string[] filterItemsRICO = { Translations.Translate("FIF_SE_IA"), "1", "2", "3", "4", "5-8", "9-12", "13+" };
+        private readonly string[] filterItemsGrowable = { Translations.Translate("FIF_SE_IA"), "1", "2", "3", "4" };
+        private readonly string[] filterItemsRICO = { Translations.Translate("FIF_SE_IA"), "1", "2", "3", "4", "5-8", "9-12", "13+" };
 
-        public Vector2 buildingSizeFilterIndex
+        public Vector2 BuildingSizeFilterIndex
         {
             get
             {
@@ -475,75 +477,44 @@ namespace FindIt.GUI
             panel.size = new Vector2(parent.width, 45);
             panel.relativePosition = new Vector3(0, -panel.height + 5);
 
-            // sort button
-            sortButton = SamsamTS.UIUtils.CreateButton(panel);
-            sortButton.size = new Vector2(100, 35);
-            if (Settings.useRelevanceSort)
-            {
-                sortButton.text = Translations.Translate("FIF_SO_RE");
-                sortButton.tooltip = Translations.Translate("FIF_SO_RETP");
-            }
-            else
-            {
-                sortButton.text = Translations.Translate("FIF_SO_NE");
-                sortButton.tooltip = Translations.Translate("FIF_SO_NETP");
-            }
-            sortButton.relativePosition = new Vector3(5, 5);
-
-            sortButton.eventClick += (c, p) =>
-            {
-
-                if (Settings.useRelevanceSort)
-                {
-                    Settings.useRelevanceSort = false;
-                    XMLUtils.SaveSettings();
-                    sortButton.text = Translations.Translate("FIF_SO_NE");
-                    sortButton.tooltip = Translations.Translate("FIF_SO_NETP");
-                }
-                else
-                {
-                    Settings.useRelevanceSort = true;
-                    XMLUtils.SaveSettings();
-                    sortButton.text = Translations.Translate("FIF_SO_RE");
-                    sortButton.tooltip = Translations.Translate("FIF_SO_RETP");
-                }
-                Search();
-            };
+            // sort checkbox toggle tab
+            sortToggle = CreateSortToggle(panel);
+            sortToggle.relativePosition = new Vector3(5, 5);
 
             // ploppable filter tabs
             filterPloppable = panel.AddUIComponent<UIFilterPloppable>();
             filterPloppable.isVisible = false;
-            filterPloppable.relativePosition = new Vector3(sortButton.relativePosition.x + sortButton.width, 0);
+            filterPloppable.relativePosition = new Vector3(sortToggle.relativePosition.x + sortToggle.width, 0);
             filterPloppable.eventFilteringChanged += (c, p) => Search();
 
             // growable filter tabs
             filterGrowable = panel.AddUIComponent<UIFilterGrowable>();
             filterGrowable.isVisible = false;
-            filterGrowable.relativePosition = new Vector3(sortButton.relativePosition.x + sortButton.width, 0);
+            filterGrowable.relativePosition = new Vector3(sortToggle.relativePosition.x + sortToggle.width, 0);
             filterGrowable.eventFilteringChanged += (c, p) => Search();
 
             // prop filter tabs
             filterProp = panel.AddUIComponent<UIFilterProp>();
             filterProp.isVisible = false;
-            filterProp.relativePosition = new Vector3(sortButton.relativePosition.x + sortButton.width, 0);
+            filterProp.relativePosition = new Vector3(sortToggle.relativePosition.x + sortToggle.width, 0);
             filterProp.eventFilteringChanged += (c, p) => Search();
 
             // tree filter tabs
             filterTree = panel.AddUIComponent<UIFilterTree>();
             filterTree.isVisible = false;
-            filterTree.relativePosition = new Vector3(sortButton.relativePosition.x + sortButton.width, 0);
+            filterTree.relativePosition = new Vector3(sortToggle.relativePosition.x + sortToggle.width, 0);
             filterTree.eventFilteringChanged += (c, p) => Search();
 
             // network filter tabs
             filterNetwork = panel.AddUIComponent<UIFilterNetwork>();
             filterNetwork.isVisible = false;
-            filterNetwork.relativePosition = new Vector3(sortButton.relativePosition.x + sortButton.width, 0);
+            filterNetwork.relativePosition = new Vector3(sortToggle.relativePosition.x + sortToggle.width, 0);
             filterNetwork.eventFilteringChanged += (c, p) => Search();
 
             // decal filter tabs
             filterDecal = panel.AddUIComponent<UIFilterDecal>();
             filterDecal.isVisible = false;
-            filterDecal.relativePosition = new Vector3(sortButton.relativePosition.x + sortButton.width, 0);
+            filterDecal.relativePosition = new Vector3(sortToggle.relativePosition.x + sortToggle.width, 0);
 
             UpdateFilterPanels();
             CreateAssetTypePanel();
@@ -584,7 +555,7 @@ namespace FindIt.GUI
             {
                 // avoid triggering duplicate searches
                 searchEnabled = false;
-                
+
                 input.text = "";
                 typeFilter.selectedIndex = 0;
                 workshopFilter.isChecked = true;
@@ -662,12 +633,12 @@ namespace FindIt.GUI
             }
         }
 
-        private void ShowFilterPanel(UIPanel panel)
+        private static void ShowFilterPanel(UIPanel panel)
         {
             panel.isVisible = true;
         }
 
-        private void HideFilterPanel(UIPanel panel)
+        private static void HideFilterPanel(UIPanel panel)
         {
             panel.isVisible = false;
         }
@@ -700,13 +671,13 @@ namespace FindIt.GUI
             extraFiltersPanel.relativePosition = new Vector2(0, -inputPanel.height - extraFiltersPanel.height - 40);
         }
 
-        private void DestroyExtraFiltersPanel()
-        {
-            if (extraFiltersPanel == null) return;
-            extraFiltersPanel.Close();
-            RemoveUIComponent(extraFiltersPanel);
-            extraFiltersPanel = null;
-        }
+        //private void DestroyExtraFiltersPanel()
+        //{
+        //    if (extraFiltersPanel == null) return;
+        //    extraFiltersPanel.Close();
+        //    RemoveUIComponent(extraFiltersPanel);
+        //    extraFiltersPanel = null;
+        //}
 
         public void OpenExtraFiltersPanel()
         {
@@ -736,14 +707,14 @@ namespace FindIt.GUI
             tagPanel.relativePosition = new Vector2(0, -inputPanel.height - tagPanel.height - 40);
         }
 
-        private void DestroyCustomTagPanel()
-        {
-            if (tagPanel == null) return;
-            tagPanel.Close();
-            RemoveUIComponent(tagPanel);
-            tagPanel = null;
-            UISearchBox.instance.scrollPanel.Refresh();
-        }
+        //private void DestroyCustomTagPanel()
+        //{
+        //    if (tagPanel == null) return;
+        //    tagPanel.Close();
+        //    RemoveUIComponent(tagPanel);
+        //    tagPanel = null;
+        //    UISearchBox.instance.scrollPanel.Refresh();
+        //}
 
         public void OpenCustomTagPanel()
         {
@@ -785,6 +756,82 @@ namespace FindIt.GUI
             XMLUtils.SaveSettings();
         }
 
+        private UICheckBox CreateSortToggle(UIComponent parent)
+        {
+            UICheckBox checkBox = parent.AddUIComponent<UICheckBox>();
+            float tabSize = 35f;
+            string checkedSprite = "Relevance";
+            string uncheckedSprite = "Recent";
+            string atlas = "FindItAtlas";
+
+            checkBox.width = tabSize;
+            checkBox.height = tabSize;
+            checkBox.clipChildren = true;
+            checkBox.isChecked = true;
+            checkBox.tooltip = Translations.Translate("FIF_SO_RETP");
+
+            UIPanel panel = checkBox.AddUIComponent<UIPanel>();
+            panel.atlas = SamsamTS.UIUtils.GetAtlas("FindItAtlas");
+            panel.backgroundSprite = "SortToggle";
+            panel.size = checkBox.size;
+            panel.relativePosition = Vector3.zero;
+
+            UISprite sprite = panel.AddUIComponent<UISprite>();
+            sprite.atlas = SamsamTS.UIUtils.GetAtlas(atlas);
+
+            sprite.spriteName = checkedSprite;
+            sprite.size = checkBox.size;
+            sprite.relativePosition = Vector3.zero;
+
+            checkBox.checkedBoxObject = sprite.AddUIComponent<UISprite>();
+            ((UISprite)checkBox.checkedBoxObject).atlas = sprite.atlas;
+            ((UISprite)checkBox.checkedBoxObject).spriteName = checkedSprite;
+            checkBox.checkedBoxObject.size = checkBox.size;
+            checkBox.checkedBoxObject.relativePosition = Vector3.zero;
+
+            checkBox.readOnly = true;
+            checkBox.checkedBoxObject.isInteractive = false; // Don't eat my double click event please
+
+            checkBox.eventClick += (c, p) =>
+            {
+                checkBox.isChecked = !checkBox.isChecked;
+            };
+            checkBox.eventCheckChanged += (c, b) =>
+            {
+                if (checkBox.isChecked)
+                {
+                    sprite.spriteName = checkedSprite;
+                    Settings.useRelevanceSort = true;
+                    XMLUtils.SaveSettings();
+                    checkBox.tooltip = Translations.Translate("FIF_SO_RETP");
+                }
+                else
+                {
+                    sprite.spriteName = uncheckedSprite;
+                    Settings.useRelevanceSort = false;
+                    XMLUtils.SaveSettings();
+                    checkBox.tooltip = Translations.Translate("FIF_SO_NETP");
+                }
+                panel.Invalidate();
+                Search();
+            };
+            checkBox.eventMouseEnter += (c, p) =>
+            {
+                panel.opacity = 0.4f;
+            };
+
+            checkBox.eventMouseLeave += (c, p) =>
+            {
+                panel.opacity = 1.0f;
+            };
+
+            if (!Settings.useRelevanceSort)
+            {
+                checkBox.isChecked = false;
+            }
+            return checkBox;
+        }
+
         private void CreateSearchTabPanel()
         {
             if (searchTabPanel != null) return;
@@ -794,30 +841,30 @@ namespace FindIt.GUI
             searchTabPanel.color = new Color32(196, 200, 206, 255);
             searchTabPanel.isVisible = true;
             searchTabPanel.size = new Vector2(sizeFilterX.position.x, 35);
-            searchTabPanel.relativePosition = new Vector2(0, 2 -inputPanel.height - searchTabPanel.height - 40);
+            searchTabPanel.relativePosition = new Vector2(0, 2 - inputPanel.height - searchTabPanel.height - 40);
         }
 
         private void UpdateTopPanelsPosition()
         {
             if (extraFiltersPanel.isVisible && tagPanel.isVisible)
             {
-                tagPanel.relativePosition = new Vector2(0, 2 -inputPanel.height - tagPanel.height - 40);
-                extraFiltersPanel.relativePosition = new Vector2(0, 4 -inputPanel.height - extraFiltersPanel.height - tagPanel.height - 40);
-                searchTabPanel.relativePosition = new Vector2(0, 6 -inputPanel.height - extraFiltersPanel.height - tagPanel.height - searchTabPanel.height - 40);
+                tagPanel.relativePosition = new Vector2(0, 2 - inputPanel.height - tagPanel.height - 40);
+                extraFiltersPanel.relativePosition = new Vector2(0, 4 - inputPanel.height - extraFiltersPanel.height - tagPanel.height - 40);
+                searchTabPanel.relativePosition = new Vector2(0, 6 - inputPanel.height - extraFiltersPanel.height - tagPanel.height - searchTabPanel.height - 40);
             }
             else if (extraFiltersPanel.isVisible && !tagPanel.isVisible)
             {
-                extraFiltersPanel.relativePosition = new Vector2(0, 2 -inputPanel.height - extraFiltersPanel.height - 40);
-                searchTabPanel.relativePosition = new Vector2(0, 4 -inputPanel.height - extraFiltersPanel.height - searchTabPanel.height - 40);
+                extraFiltersPanel.relativePosition = new Vector2(0, 2 - inputPanel.height - extraFiltersPanel.height - 40);
+                searchTabPanel.relativePosition = new Vector2(0, 4 - inputPanel.height - extraFiltersPanel.height - searchTabPanel.height - 40);
             }
             else if (!extraFiltersPanel.isVisible && tagPanel.isVisible)
             {
-                tagPanel.relativePosition = new Vector2(0, 2 -inputPanel.height - tagPanel.height - 40);
-                searchTabPanel.relativePosition = new Vector2(0, 4 -inputPanel.height - tagPanel.height - searchTabPanel.height - 40);
+                tagPanel.relativePosition = new Vector2(0, 2 - inputPanel.height - tagPanel.height - 40);
+                searchTabPanel.relativePosition = new Vector2(0, 4 - inputPanel.height - tagPanel.height - searchTabPanel.height - 40);
             }
             else
             {
-                searchTabPanel.relativePosition = new Vector2(0, 2 -inputPanel.height - searchTabPanel.height - 40);
+                searchTabPanel.relativePosition = new Vector2(0, 2 - inputPanel.height - searchTabPanel.height - 40);
             }
         }
 
@@ -889,8 +936,8 @@ namespace FindIt.GUI
             if (type == DropDownOptions.Growable)
             {
                 // if switch back from rico with size > 4, default size = all
-                if (UISearchBox.instance.buildingSizeFilterIndex.x > 4) UISearchBox.instance.sizeFilterX.selectedIndex = 0;
-                if (UISearchBox.instance.buildingSizeFilterIndex.y > 4) UISearchBox.instance.sizeFilterY.selectedIndex = 0;
+                if (UISearchBox.instance.BuildingSizeFilterIndex.x > 4) UISearchBox.instance.sizeFilterX.selectedIndex = 0;
+                if (UISearchBox.instance.BuildingSizeFilterIndex.y > 4) UISearchBox.instance.sizeFilterY.selectedIndex = 0;
             }
 
             matches = AssetTagList.instance.Find(text, type);
@@ -964,7 +1011,9 @@ namespace FindIt.GUI
             {
                 if (asset.prefab != null)
                 {
+#pragma warning disable IDE0017 // Simplify object initialization
                     UIScrollPanelItem.ItemData data = new UIScrollPanelItem.ItemData();
+#pragma warning restore IDE0017 // Simplify object initialization
                     data.name = asset.title;// + "_" + asset.steamID;
                     data.tooltip = Asset.GetLocalizedTooltip(asset, asset.prefab, data.name);
                     data.tooltipBox = GeneratedPanel.GetTooltipBox(TooltipHelper.GetHashCode(data.tooltip));
@@ -1022,7 +1071,11 @@ namespace FindIt.GUI
             HideFilterPanel(filterDecal);
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
+#pragma warning disable IDE0060 // Remove unused parameter
         private void OnTooltipClicked(UIComponent c, UIMouseEventParameter p)
+#pragma warning restore IDE0060 // Remove unused parameter
+#pragma warning restore IDE0051 // Remove unused private members
         {
             if (!p.used && p.buttons == UIMouseButton.Right)
             {
@@ -1055,7 +1108,7 @@ namespace FindIt.GUI
             // avoid triggering duplicate searches
             searchEnabled = false;
 
-            if (targetAsset.assetType == Asset.AssetType.Rico || targetAsset.assetType == Asset.AssetType.Growable 
+            if (targetAsset.assetType == Asset.AssetType.Rico || targetAsset.assetType == Asset.AssetType.Growable
                 || targetAsset.assetType == Asset.AssetType.Ploppable)
             {
                 /*
@@ -1067,14 +1120,14 @@ namespace FindIt.GUI
                 // set building size filter
                 if (sizeFilterX.selectedIndex != 0) // if not 'all'
                 {
-                    if (!AssetTagList.instance.CheckBuildingSizeXY(targetAsset.size.x, buildingSizeFilterIndex.x)) // if wrong size option
+                    if (!AssetTagList.CheckBuildingSizeXY(targetAsset.size.x, BuildingSizeFilterIndex.x)) // if wrong size option
                     {
                         sizeFilterX.selectedIndex = 0;
                     }
                 }
                 if (sizeFilterY.selectedIndex != 0) // if not 'all'
                 {
-                    if (!AssetTagList.instance.CheckBuildingSizeXY(targetAsset.size.y, buildingSizeFilterIndex.y)) // if wrong size option
+                    if (!AssetTagList.CheckBuildingSizeXY(targetAsset.size.y, BuildingSizeFilterIndex.y)) // if wrong size option
                     {
                         sizeFilterY.selectedIndex = 0;
                     }
@@ -1195,7 +1248,9 @@ namespace FindIt.GUI
             return true;
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
         private void PickerRandomTest()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             int index = UnityEngine.Random.Range(0, AssetTagList.instance.assets.Count);
             Asset testTarget = AssetTagList.instance.assets.ElementAt(index).Value;
@@ -1203,8 +1258,10 @@ namespace FindIt.GUI
             Picker(testTarget.prefab);
         }
 
-        protected override void OnKeyDown(UIKeyEventParameter p) {
-            if(p.keycode == KeyCode.Escape) {
+        protected override void OnKeyDown(UIKeyEventParameter p)
+        {
+            if (p.keycode == KeyCode.Escape)
+            {
                 if (hasFocus)
                 {
                     // If the search box is focussed, unfocus.
@@ -1214,9 +1271,14 @@ namespace FindIt.GUI
             base.OnKeyDown(p);
         }
 
-        void OnGUI() {
-            try {
-                if (!UIView.HasModalInput() && UIView.HasInputFocus() && input.hasFocus) {
+#pragma warning disable IDE0051 // Remove unused private members
+        void OnGUI()
+#pragma warning restore IDE0051 // Remove unused private members
+        {
+            try
+            {
+                if (!UIView.HasModalInput() && UIView.HasInputFocus() && input.hasFocus)
+                {
                     // UUI does not handle keys when input has focus.
                     // handle hotkeys only if Findit panel is the input that has focus
                     Event e = Event.current;
@@ -1243,7 +1305,9 @@ namespace FindIt.GUI
                     else if (Settings.randomSelectionKey.IsPressed(e))
                         Settings.OpenFindIt(-2);
                 }
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.Log("OnGUI failed");
                 Debug.LogException(e);
             }

@@ -2,8 +2,8 @@
 // https://github.com/SamsamTS/CS-FindIt
 // Filter tabs panel for prop
 
-using UnityEngine;
 using ColossalFramework.UI;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
@@ -39,24 +39,26 @@ namespace FindIt.GUI
 
         public static Category GetCategory(Asset.PropType propType)
         {
-            if (propType == Asset.PropType.PropsIndustrial) return Category.PropsIndustrial;
-            if (propType == Asset.PropType.PropsParks) return Category.PropsParks;
-            if (propType == Asset.PropType.PropsCommon) return Category.PropsCommon;
-            if (propType == Asset.PropType.PropsResidential) return Category.PropsResidential;
-            if (propType == Asset.PropType.PropsBillboards) return Category.PropsBillboards;
-            if (propType == Asset.PropType.PropsSpecialBillboards) return Category.PropsSpecialBillboards;
-            if (propType == Asset.PropType.PropsLights) return Category.PropsLights;
-            if (propType == Asset.PropType.Natural) return Category.Natural;
-            if (propType == Asset.PropType.Unsorted) return Category.Unsorted;
-            if (propType == Asset.PropType.PropsMarker) return Category.Marker;
-            if (propType == Asset.PropType.PropsMoterVehicle) return Category.PropsMoterVehicle;
-            if (propType == Asset.PropType.PropsRailwayVehicle) return Category.PropsRailwayVehicle;
-            if (propType == Asset.PropType.PropsAircraft) return Category.PropsAircraft;
-            if (propType == Asset.PropType.PropsWaterCraft) return Category.PropsWaterCraft;
-            if (propType == Asset.PropType.PropsUnsortedVehicle) return Category.PropsUnsortedVehicle;
-            if (propType == Asset.PropType.PropsTree) return Category.PropsTree;
-
-            return Category.None;
+            switch (propType)
+            {
+                case Asset.PropType.PropsIndustrial: return Category.PropsIndustrial;
+                case Asset.PropType.PropsParks: return Category.PropsParks;
+                case Asset.PropType.PropsCommon: return Category.PropsCommon;
+                case Asset.PropType.PropsResidential: return Category.PropsResidential;
+                case Asset.PropType.PropsBillboards: return Category.PropsBillboards;
+                case Asset.PropType.PropsSpecialBillboards: return Category.PropsSpecialBillboards;
+                case Asset.PropType.PropsLights: return Category.PropsLights;
+                case Asset.PropType.Natural: return Category.Natural;
+                case Asset.PropType.Unsorted: return Category.Unsorted;
+                case Asset.PropType.PropsMarker: return Category.Marker;
+                case Asset.PropType.PropsMoterVehicle: return Category.PropsMoterVehicle;
+                case Asset.PropType.PropsRailwayVehicle: return Category.PropsRailwayVehicle;
+                case Asset.PropType.PropsAircraft: return Category.PropsAircraft;
+                case Asset.PropType.PropsWaterCraft: return Category.PropsWaterCraft;
+                case Asset.PropType.PropsUnsortedVehicle: return Category.PropsUnsortedVehicle;
+                case Asset.PropType.PropsTree: return Category.PropsTree;
+                default: return Category.None;
+            }
         }
 
         public class CategoryIcons
@@ -98,7 +100,7 @@ namespace FindIt.GUI
                 "SubBarPropsCommonLights",
                 "InfoIconResources",
                 "ToolbarIconHelp",
-                "RoadOptionUpgrade"
+                "LocationMarkerActiveNormal"
             };
 
             public static readonly string[] tooltips =
@@ -244,19 +246,19 @@ namespace FindIt.GUI
                 UISearchBox.instance.PickRandom();
             };
 
-            all = SamsamTS.UIUtils.CreateButton(this);
-            all.size = new Vector2(55, 35);
-            all.text = Translations.Translate("FIF_SE_IA");
-            all.relativePosition = new Vector3(randomIcon.relativePosition.x + randomIcon.width + 5, 5);
+            //all = SamsamTS.UIUtils.CreateButton(this);
+            //all.size = new Vector2(55, 35);
+            //all.text = Translations.Translate("FIF_SE_IA");
+            //all.relativePosition = new Vector3(randomIcon.relativePosition.x + randomIcon.width + 5, 5);
 
-            all.eventClick += (c, p) =>
-            {
-                for (int i = 0; i < (int)Category.All; i++)
-                {
-                    toggles[i].isChecked = true;
-                }
-                eventFilteringChanged(this, 0);
-            };
+            //all.eventClick += (c, p) =>
+            //{
+            //    for (int i = 0; i < (int)Category.All; i++)
+            //    {
+            //        toggles[i].isChecked = true;
+            //    }
+            //    eventFilteringChanged(this, 0);
+            //};
 
             width = parent.width;
         }

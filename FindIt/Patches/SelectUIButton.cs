@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ColossalFramework.UI;
 using HarmonyLib;
-using ColossalFramework.UI;
+using System;
 
 namespace FindIt
 {

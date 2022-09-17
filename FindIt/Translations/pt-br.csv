@@ -245,3 +245,8 @@
 "FIF_EF_DS","Estilo do Distrito"
 "FIF_SET_CHA","Allow asset creators to hide dependency assets from search results"
 "FIF_SET_CHATP","assets with creator_hidden in their description will be excluded from future search results"
+"FIF_GR_RW2W","Residential Wall-to-Wall"
+"FIF_GR_CW2W","Commercial Wall-to-Wall"
+"FIF_GR_OW2W","Office Wall-to-Wall"
+"FIF_NET_ZPATH","Zonable Paths"
+"FIF_PLOP_SP","Service Points"

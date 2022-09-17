@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ColossalFramework.IO;
+using ColossalFramework.UI;
+using FindIt.GUI;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using FindIt.GUI;
-using ColossalFramework.UI;
-using ColossalFramework.IO;
 
 namespace FindIt
 {
@@ -21,8 +21,7 @@ namespace FindIt
 
                 if (!steamIds.ContainsKey(asset.steamID))
                 {
-                    List<Asset> assetList = new List<Asset>();
-                    assetList.Add(asset);
+                    List<Asset> assetList = new List<Asset> { asset };
                     steamIds.Add(asset.steamID, assetList);
                 }
                 else

@@ -2,9 +2,9 @@
 // https://github.com/SamsamTS/CS-FindIt
 // search tabs panel
 
-using UnityEngine;
 using ColossalFramework.UI;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace FindIt.GUI
 {

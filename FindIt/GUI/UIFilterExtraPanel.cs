@@ -2,9 +2,9 @@
 // https://github.com/SamsamTS/CS-FindIt
 // extra filters panel
 
-using UnityEngine;
 using ColossalFramework.UI;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
@@ -101,6 +101,7 @@ namespace FindIt.GUI
             MassTransit,
             NaturalDisasters,
             Parklife,
+            PlazasAndPromenades,
             SnowFall,
             SunsetHarbor,
             ArtDeco,
@@ -112,6 +113,8 @@ namespace FindIt.GUI
             TrainStations,
             BridgesPiers,
             VehiclesoftheWorld,
+            MidCenturyModern,
+            SeasideResorts,
             Concerts,
             DeluxeUpgrade,
             MatchDay,
@@ -470,6 +473,7 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Mass Transit DLC");
             dlcDropDownMenu.AddItem("Natural Disasters DLC");
             dlcDropDownMenu.AddItem("Parklife DLC");
+            dlcDropDownMenu.AddItem("Plazas & Promenades DLC");
             dlcDropDownMenu.AddItem("Snow Fall DLC");
             dlcDropDownMenu.AddItem("Sunset Harbor DLC");
             dlcDropDownMenu.AddItem("Art Deco CCP");
@@ -481,6 +485,8 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Train Stations CCP");
             dlcDropDownMenu.AddItem("Bridges & Piers CCP");
             dlcDropDownMenu.AddItem("Vehicles of the World CCP");
+            dlcDropDownMenu.AddItem("Mid-Century Modern CCP");
+            dlcDropDownMenu.AddItem("Seaside Resorts CCP");
             dlcDropDownMenu.AddItem("Concerts DLC");
             dlcDropDownMenu.AddItem("Deluxe Upgrade Pack");
             dlcDropDownMenu.AddItem("Match Day DLC");
@@ -608,6 +614,7 @@ namespace FindIt.GUI
                 if (style.Name.Equals(DistrictStyle.kEuropeanStyleName)) list.Add("European / Vanilla (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kEuropeanSuburbiaStyleName)) list.Add("European Suburbia (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack5StyleName)) list.Add("Modern City Center (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack11StyleName)) list.Add("Mid-Century Modern (" + style.Count.ToString() + ")");
                 else list.Add(style.FullName + " (" + style.Count.ToString() + ")");
             }
 

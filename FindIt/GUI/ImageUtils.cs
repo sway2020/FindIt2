@@ -1,15 +1,18 @@
 ﻿// modified from SamsamTS's original Find It mod
 // https://github.com/SamsamTS/CS-FindIt
 
-using UnityEngine;
 using ColossalFramework;
 using ColossalFramework.UI;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
     public class ImageUtils
     {
         private static Texture2D focusedFilterTexture;
+        private static HashSet<PrefabInfo> fixedPrefabs = new HashSet<PrefabInfo>();
+
         public static void AddThumbnailVariantsInAtlas(PrefabInfo prefab)
         {
             Texture2D texture = prefab.m_Atlas[prefab.m_Thumbnail].texture;
@@ -22,6 +25,8 @@ namespace FindIt.GUI
 
         public static void FixThumbnails(PrefabInfo prefab, UIButton button, Asset asset = null)
         {
+            if (fixedPrefabs.Contains(prefab)) return;
+
             // Fixing thumbnails
             if (prefab.m_Atlas == null || prefab.m_Thumbnail.IsNullOrWhiteSpace() ||
                 // used for more than one prefab
@@ -47,7 +52,7 @@ namespace FindIt.GUI
                 )
             {
                 ThumbnailManager.MakeThumbnail(prefab, button);
-
+                fixedPrefabs.Add(prefab);
                 return;
             }
 
@@ -65,7 +70,9 @@ namespace FindIt.GUI
                 prefab.m_Thumbnail == "thumb_Path Rock Small 01" ||
                 prefab.m_Thumbnail == "thumb_Path Rock Small 02" ||
                 prefab.m_Thumbnail == "thumb_Path Rock Small 03" ||
-                prefab.m_Thumbnail == "thumb_Path Rock Small 04"
+                prefab.m_Thumbnail == "thumb_Path Rock Small 04" ||
+                // Plazas & Promenades DLC growables have missing variations
+                ((prefab.m_dlcRequired == SteamHelper.DLC_BitMask.PlazasAndPromenadesDLC) && !prefab.m_isCustomContent && (asset?.assetType == Asset.AssetType.Growable))
                 ))
             {
                 AddThumbnailVariantsInAtlas(prefab);
@@ -73,13 +80,14 @@ namespace FindIt.GUI
                 if (button != null)
                 {
                     button.atlas = prefab.m_Atlas;
-
                     button.normalFgSprite = prefab.m_Thumbnail;
                     button.hoveredFgSprite = prefab.m_Thumbnail + "Hovered";
                     button.pressedFgSprite = prefab.m_Thumbnail + "Pressed";
                     button.disabledFgSprite = prefab.m_Thumbnail + "Disabled";
                     button.focusedFgSprite = null;
                 }
+                fixedPrefabs.Add(prefab);
+                return;
             }
 
             // Requested custom thumbnails or having null thumbnail atlas
@@ -88,6 +96,7 @@ namespace FindIt.GUI
                 if (asset.tagsCustom.Contains("bad_thumbnail") || prefab.m_Atlas[prefab.m_Thumbnail] == null)
                 {
                     ThumbnailManager.MakeThumbnail(prefab, button);
+                    fixedPrefabs.Add(prefab);
                     return;
                 }
             }
@@ -111,7 +120,7 @@ namespace FindIt.GUI
 
         public static void ScaleTexture2(Texture2D tex, int width, int height)
         {
-            var newPixels = new Color[width * height];
+            //var newPixels = new Color[width * height];
 
             float ratio = ((float)width) / tex.width;
             if (tex.height * ratio > height)
@@ -141,7 +150,7 @@ namespace FindIt.GUI
         {
             if (focusedFilterTexture == null)
             {
-                focusedFilterTexture = ResourceLoader.loadTextureFromAssembly("FindIt.Icons.SelectFilter.png");
+                focusedFilterTexture = ResourceLoader.LoadTextureFromAssembly("FindIt.Icons.SelectFilter.png");
             }
 
             int b = c.b * 31 / 255;

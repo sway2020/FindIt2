@@ -1,24 +1,44 @@
 ﻿// modified from SamsamTS's original Find It mod
 // https://github.com/SamsamTS/CS-FindIt
 
+using CitiesHarmony.API;
+using ColossalFramework.IO;
+using ColossalFramework.UI;
 using ICities;
 using System;
-using ColossalFramework.UI;
-using CitiesHarmony.API;
 using System.IO;
-using ColossalFramework.IO;
 
 namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.8.4";
+        public const string version = "2.9";
         public const bool isBeta = false;
         public const bool debug = false;
-        public const double updateNoticeDate = 20220824;
+        public const double updateNoticeDate = 20220914;
         public const string updateNotice =
 
-            "- Fix bug that could cause the Picker mod to fail to pick up growables and ploppables in some cases\n\n";
+        "Add support for the new game update and the new DLC and 2 Content Creator Packs:\n" +
+        "  Plazas & Promenades DLC\n" +
+        "  Mid-Century Modern CCP by REV0\n" +
+        "  Seaside Resorts CCP by Gèze\n\n" +
+
+        "- Fix the Harmony patch broken by the new game update\n\n" +
+
+        "- Add 3 growable filter tabs for the wall-to-wall types introduced by the new DLC\n\n" +
+
+        "- Add a network filter tab for the new zonable paths introduced by the new DLC\n\n" +
+
+        "- Add a ploppable filter tab for the new service points introduced by the new DLC\n\n" +
+
+        "- Update district style filter to include the Mid-Century Modern style by REV0\n\n" +
+
+        "- Update DLC filter and Creator filter to include the new DLC and CCPs\n\n" +
+
+        "- Show icons of the new DLC & CCPs on asset thumbnails\n\n" +
+
+        "- UI changes\n";
+        
 
         public string Name
         {

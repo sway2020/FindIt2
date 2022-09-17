@@ -2,8 +2,8 @@
 // https://github.com/SamsamTS/CS-FindIt
 // Filter tabs panel for decal
 
-using UnityEngine;
 using ColossalFramework.UI;
+using UnityEngine;
 
 namespace FindIt.GUI
 {

@@ -43,8 +43,10 @@ namespace FindIt
             button.eventVisibilityChanged += ButtonVisibilityChanged;
         }
 
-        private void ButtonVisibilityChanged(UIComponent component, bool isVisible) {
-            if (isVisible) {
+        private void ButtonVisibilityChanged(UIComponent component, bool isVisible)
+        {
+            if (isVisible)
+            {
                 button.text = unsavedInputKey.ToLocalizedString("KEYNAME");
             }
         }
@@ -149,7 +151,8 @@ namespace FindIt
             }
         }
 
-        public void Init(UnsavedInputKey keybind) {
+        public void Init(UnsavedInputKey keybind)
+        {
             unsavedInputKey = keybind;
             labelString = Translations.Translate(keybind.name);
         }

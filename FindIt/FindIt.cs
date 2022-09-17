@@ -1,16 +1,16 @@
 ﻿// modified from SamsamTS's original Find It mod
 // https://github.com/SamsamTS/CS-FindIt
 
-using ICities;
-using UnityEngine;
-using System;
-using System.Reflection;
-using ColossalFramework.UI;
-using ColossalFramework.Plugins;
-using System.Collections.Generic;
 using ColossalFramework.Globalization;
-using FindIt.GUI;
+using ColossalFramework.Plugins;
+using ColossalFramework.UI;
 using EManagersLib.API;
+using FindIt.GUI;
+using ICities;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
 
 namespace FindIt
 {
@@ -375,10 +375,6 @@ namespace FindIt
                     "FindItHovered",
                     "FindItPressed",
                     "Tag",
-                    "ZoningCommercialEco",
-                    "ZoningCommercialLeisure",
-                    "ZoningCommercialTourist",
-                    "ZoningOfficeHightech",
                     "ZoningResidentialHighEco",
                     "ZoningResidentialLowEco",
                     "ToolbarIconPropsBillboards",
@@ -407,7 +403,10 @@ namespace FindIt
                     "TaxiwayPressed",
                     "Refresh",
                     "Locate",
-                    "NewTab"
+                    "NewTab",
+                    "Relevance",
+                    "Recent",
+                    "SortToggle"
                 };
 
                 atlas = ResourceLoader.CreateTextureAtlas("FindItAtlas", spriteNames, "FindIt.Icons.");

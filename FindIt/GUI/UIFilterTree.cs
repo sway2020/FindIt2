@@ -2,8 +2,8 @@
 // https://github.com/SamsamTS/CS-FindIt
 // Filter tabs panel for tree
 
-using UnityEngine;
 using ColossalFramework.UI;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
@@ -26,11 +26,13 @@ namespace FindIt.GUI
 
         public static Category GetCategory(Asset.TreeType treeType)
         {
-            if (treeType == Asset.TreeType.SmallTree) return Category.SmallTree;
-            if (treeType == Asset.TreeType.MediumTree) return Category.MediumTree;
-            if (treeType == Asset.TreeType.LargeTree) return Category.LargeTree;
-
-            return Category.None;
+            switch (treeType)
+            {
+                case Asset.TreeType.SmallTree: return Category.SmallTree;
+                case Asset.TreeType.MediumTree: return Category.MediumTree;
+                case Asset.TreeType.LargeTree: return Category.LargeTree;
+                default: return Category.None;
+            }
         }
 
         public class CategoryIcons
@@ -166,19 +168,19 @@ namespace FindIt.GUI
                 UISearchBox.instance.PickRandom();
             };
 
-            all = SamsamTS.UIUtils.CreateButton(this);
-            all.size = new Vector2(55, 35);
-            all.text = Translations.Translate("FIF_SE_IA");
-            all.relativePosition = new Vector3(randomIcon.relativePosition.x + randomIcon.width + 5, 5);
+            //all = SamsamTS.UIUtils.CreateButton(this);
+            //all.size = new Vector2(55, 35);
+            //all.text = Translations.Translate("FIF_SE_IA");
+            //all.relativePosition = new Vector3(randomIcon.relativePosition.x + randomIcon.width + 5, 5);
 
-            all.eventClick += (c, p) =>
-            {
-                for (int i = 0; i < (int)Category.All; i++)
-                {
-                    toggles[i].isChecked = true;
-                }
-                eventFilteringChanged(this, 0);
-            };
+            //all.eventClick += (c, p) =>
+            //{
+            //    for (int i = 0; i < (int)Category.All; i++)
+            //    {
+            //        toggles[i].isChecked = true;
+            //    }
+            //    eventFilteringChanged(this, 0);
+            //};
 
             width = parent.width;
         }

@@ -2,8 +2,8 @@
 // https://github.com/SamsamTS/CS-FindIt
 // Filter tabs panel for growable
 
-using UnityEngine;
 using ColossalFramework.UI;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
@@ -18,11 +18,14 @@ namespace FindIt.GUI
             ResidentialHigh,
             ResidentialLowEco,
             ResidentialHighEco,
+            ResidentialWallToWall,
             CommercialLow,
             CommercialHigh,
             CommercialEco,
+            CommercialWallToWall,
             OfficeGeneric,
             OfficeHightech,
+            OfficeWallToWall,
             Industrial,
             Farming,
             Forestry,
@@ -42,18 +45,21 @@ namespace FindIt.GUI
                 "Thumbnails",
                 "FindItAtlas",
                 "FindItAtlas",
+                "Ingame",
                 "Thumbnails",
                 "Thumbnails",
-                "FindItAtlas",
                 "Thumbnails",
-                "FindItAtlas",
+                "Ingame",
+                "Thumbnails",
+                "Thumbnails",
+                "Ingame",
                 "Thumbnails",
                 "Ingame",
                 "Ingame",
                 "Ingame",
                 "Ingame",
-                "FindItAtlas",
-                "FindItAtlas",
+                "Ingame",
+                "Ingame",
                 "Ingame"
             };
 
@@ -63,18 +69,21 @@ namespace FindIt.GUI
                 "ZoningResidentialHigh",
                 "ZoningResidentialLowEco",
                 "ZoningResidentialHighEco",
+                "IconPolicyResidentialWallToWall",
                 "ZoningCommercialLow",
                 "ZoningCommercialHigh",
-                "ZoningCommercialEco",
+                "DistrictSpecializationOrganic",
+                "IconPolicyCommercialWallToWall",
                 "ZoningOffice",
-                "ZoningOfficeHightech",
+                "DistrictSpecializationHightech",
+                "IconPolicyOfficeWallToWall",
                 "ZoningIndustrial",
                 "IconPolicyFarming",
                 "IconPolicyForest",
                 "IconPolicyOil",
                 "IconPolicyOre",
-                "ZoningCommercialLeisure",
-                "ZoningCommercialTourist",
+                "IconPolicyLeisure",
+                "IconPolicyTourist",
                 "ToolbarIconHelp"
             };
 
@@ -84,11 +93,14 @@ namespace FindIt.GUI
                 Translations.Translate("FIF_GR_HDR"), // high density residential
                 Translations.Translate("FIF_GR_LDRE"), // low density residential eco
                 Translations.Translate("FIF_GR_HDRE"), // high density residential eco
+                Translations.Translate("FIF_GR_RW2W"), // residential wall-to-wall
                 Translations.Translate("FIF_GR_LDC"), // low density commercial
                 Translations.Translate("FIF_GR_HDC"), // high density commercial
                 Translations.Translate("FIF_GR_CE"), // commercial eco
+                Translations.Translate("FIF_GR_CW2W"), // commercial wall-to-wall
                 Translations.Translate("FIF_GR_O"), // office
                 Translations.Translate("FIF_GR_ITC"), // IT cluster
+                Translations.Translate("FIF_GR_OW2W"), // office wall-to-wall
                 Translations.Translate("FIF_GR_GI"), // industrial
                 Translations.Translate("FIF_GR_FAI"), // farming
                 Translations.Translate("FIF_GR_FOI"), // forest
@@ -101,29 +113,33 @@ namespace FindIt.GUI
         }
 
         public UICheckBox[] toggles;
-        public UIButton all;
         private UICheckBox randomIcon;
 
         public static Category GetCategory(ItemClass itemClass)
         {
-            if (itemClass.m_subService == ItemClass.SubService.ResidentialLow) return Category.ResidentialLow;
-            if (itemClass.m_subService == ItemClass.SubService.ResidentialHigh) return Category.ResidentialHigh;
-            if (itemClass.m_subService == ItemClass.SubService.ResidentialLowEco) return Category.ResidentialLowEco;
-            if (itemClass.m_subService == ItemClass.SubService.ResidentialHighEco) return Category.ResidentialHighEco;
-            if (itemClass.m_subService == ItemClass.SubService.CommercialLow) return Category.CommercialLow;
-            if (itemClass.m_subService == ItemClass.SubService.CommercialHigh) return Category.CommercialHigh;
-            if (itemClass.m_subService == ItemClass.SubService.CommercialEco) return Category.CommercialEco;
-            if (itemClass.m_subService == ItemClass.SubService.CommercialLeisure) return Category.CommercialLeisure;
-            if (itemClass.m_subService == ItemClass.SubService.CommercialTourist) return Category.CommercialTourism;
-            if (itemClass.m_subService == ItemClass.SubService.IndustrialGeneric) return Category.Industrial;
-            if (itemClass.m_subService == ItemClass.SubService.IndustrialFarming) return Category.Farming;
-            if (itemClass.m_subService == ItemClass.SubService.IndustrialForestry) return Category.Forestry;
-            if (itemClass.m_subService == ItemClass.SubService.IndustrialOil) return Category.Oil;
-            if (itemClass.m_subService == ItemClass.SubService.IndustrialOre) return Category.Ore;
-            if (itemClass.m_subService == ItemClass.SubService.OfficeGeneric) return Category.OfficeGeneric;
-            if (itemClass.m_subService == ItemClass.SubService.OfficeHightech) return Category.OfficeHightech;
-
-            return Category.Unsorted;
+            switch (itemClass.m_subService)
+            {
+                case ItemClass.SubService.ResidentialLow: return Category.ResidentialLow;
+                case ItemClass.SubService.ResidentialHigh: return Category.ResidentialHigh;
+                case ItemClass.SubService.ResidentialLowEco: return Category.ResidentialLowEco;
+                case ItemClass.SubService.ResidentialHighEco: return Category.ResidentialHighEco;
+                case ItemClass.SubService.ResidentialWallToWall: return Category.ResidentialWallToWall;
+                case ItemClass.SubService.CommercialLow: return Category.CommercialLow;
+                case ItemClass.SubService.CommercialHigh: return Category.CommercialHigh;
+                case ItemClass.SubService.CommercialEco: return Category.CommercialEco;
+                case ItemClass.SubService.CommercialWallToWall: return Category.CommercialWallToWall;
+                case ItemClass.SubService.CommercialLeisure: return Category.CommercialLeisure;
+                case ItemClass.SubService.CommercialTourist: return Category.CommercialTourism;
+                case ItemClass.SubService.IndustrialGeneric: return Category.Industrial;
+                case ItemClass.SubService.IndustrialFarming: return Category.Farming;
+                case ItemClass.SubService.IndustrialForestry: return Category.Forestry;
+                case ItemClass.SubService.IndustrialOil: return Category.Oil;
+                case ItemClass.SubService.IndustrialOre: return Category.Ore;
+                case ItemClass.SubService.OfficeGeneric: return Category.OfficeGeneric;
+                case ItemClass.SubService.OfficeHightech: return Category.OfficeHightech;
+                case ItemClass.SubService.OfficeWallToWall: return Category.OfficeWallToWall;
+                default: return Category.Unsorted;
+            }
         }
 
         public bool IsSelected(Category category)
@@ -165,7 +181,7 @@ namespace FindIt.GUI
             {
                 toggles[i] = SamsamTS.UIUtils.CreateIconToggle(this, CategoryIcons.atlases[i], CategoryIcons.spriteNames[i], CategoryIcons.spriteNames[i], 0.4f);
                 toggles[i].tooltip = CategoryIcons.tooltips[i] + "\n" + Translations.Translate("FIF_SE_SC");
-                toggles[i].relativePosition = new Vector3(5 + 38 * i, 5);
+                toggles[i].relativePosition = new Vector3(5 + 37 * i, 5);
                 toggles[i].isChecked = true;
                 toggles[i].readOnly = true;
                 toggles[i].checkedBoxObject.isInteractive = false;
@@ -231,20 +247,6 @@ namespace FindIt.GUI
             randomIcon.eventClicked += (c, p) =>
             {
                 UISearchBox.instance.PickRandom();
-            };
-
-            all = SamsamTS.UIUtils.CreateButton(this);
-            all.size = new Vector2(55, 35);
-            all.text = Translations.Translate("FIF_SE_IA");
-            all.relativePosition = new Vector3(randomIcon.relativePosition.x + randomIcon.width + 5, 5);
-
-            all.eventClick += (c, p) =>
-            {
-                for (int i = 0; i < (int)Category.All; i++)
-                {
-                    toggles[i].isChecked = true;
-                }
-                eventFilteringChanged(this, 0);
             };
 
             width = parent.width;

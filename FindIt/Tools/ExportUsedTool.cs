@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ColossalFramework;
+using ColossalFramework.IO;
+using ColossalFramework.UI;
+using FindIt.GUI;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using ColossalFramework;
-using FindIt.GUI;
-using ColossalFramework.UI;
-using ColossalFramework.IO;
 
 namespace FindIt
 {

@@ -2,9 +2,9 @@
 // https://github.com/SamsamTS/CS-FindIt
 
 using ColossalFramework.UI;
-using UnityEngine;
 using System.IO;
 using System.Reflection;
+using UnityEngine;
 
 namespace FindIt
 {
@@ -15,12 +15,12 @@ namespace FindIt
             int maxSize = 1024;
             Texture2D texture2D = new Texture2D(1, 1, TextureFormat.ARGB32, false);
             Texture2D[] textures = new Texture2D[spriteNames.Length];
-            Rect[] regions = new Rect[spriteNames.Length];
+            //Rect[] regions = new Rect[spriteNames.Length];
 
             for (int i = 0; i < spriteNames.Length; i++)
-                textures[i] = loadTextureFromAssembly(assemblyPath + spriteNames[i] + ".png");
+                textures[i] = LoadTextureFromAssembly(assemblyPath + spriteNames[i] + ".png");
 
-            regions = texture2D.PackTextures(textures, 2, maxSize);
+            Rect[] regions = texture2D.PackTextures(textures, 2, maxSize);
 
             UITextureAtlas textureAtlas = ScriptableObject.CreateInstance<UITextureAtlas>();
             Material material = UnityEngine.Object.Instantiate<Material>(UIView.GetAView().defaultAtlas.material);
@@ -105,7 +105,7 @@ namespace FindIt
             return UIView.GetAView().defaultAtlas;
         }
 
-        public static Texture2D loadTextureFromAssembly(string path)
+        public static Texture2D LoadTextureFromAssembly(string path)
         {
             Stream manifestResourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
 

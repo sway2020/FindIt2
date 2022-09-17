@@ -1,9 +1,9 @@
 ﻿// Adapted from Ploppable RICO Revisited.  Inspired by work by SamsamTS (Boogieman Sam); all blame for everything wrong goes to algernon.
 
-using System;
-using UnityEngine;
 using ColossalFramework;
 using ColossalFramework.UI;
+using System;
+using UnityEngine;
 
 namespace FindIt.GUI
 {

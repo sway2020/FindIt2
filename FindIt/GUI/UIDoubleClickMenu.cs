@@ -1,14 +1,14 @@
 ﻿// modified from SamsamTS's original Find It mod
 // https://github.com/SamsamTS/CS-FindIt
 
-using UnityEngine;
+using ColossalFramework.Globalization;
+using ColossalFramework.Packaging;
+using ColossalFramework.PlatformServices;
 using ColossalFramework.UI;
 using System;
-using System.Reflection;
-using ColossalFramework.Packaging;
 using System.IO;
-using ColossalFramework.Globalization;
-using ColossalFramework.PlatformServices;
+using System.Reflection;
+using UnityEngine;
 
 
 namespace FindIt.GUI
@@ -360,7 +360,7 @@ namespace FindIt.GUI
                 openWorkshopOverlayButton.tooltip = Translations.Translate("FIF_DOU_FOLDCUS");
                 openWorkshopBrowserButton.tooltip = Translations.Translate("FIF_DOU_FOLDCUS");
             }
-            else if(selectedAsset.steamID == 0)
+            else if (selectedAsset.steamID == 0)
             {
                 openWorkshopOverlayButton.tooltip = Translations.Translate("FIF_DOU_WS_NOID");
                 openWorkshopBrowserButton.tooltip = Translations.Translate("FIF_DOU_WS_NOID");

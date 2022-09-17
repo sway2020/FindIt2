@@ -2,8 +2,8 @@
 // https://github.com/SamsamTS/CS-FindIt
 // Filter tabs panel for ploppable
 
-using UnityEngine;
 using ColossalFramework.UI;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
@@ -29,6 +29,7 @@ namespace FindIt.GUI
             PlayerEducation,
             VarsitySports,
             Fishing,
+            ServicePoint,
             Unsorted,
             All
         }
@@ -39,34 +40,35 @@ namespace FindIt.GUI
 
         public static Category GetCategory(ItemClass itemClass)
         {
-            if (itemClass.m_service == ItemClass.Service.Electricity) return Category.Electricity;
-            if (itemClass.m_service == ItemClass.Service.Water) return Category.Water;
-            if (itemClass.m_service == ItemClass.Service.Garbage) return Category.Garbage;
-            if (itemClass.m_service == ItemClass.Service.PlayerIndustry) return Category.PlayerIndustry;
-            if (itemClass.m_service == ItemClass.Service.Fishing) return Category.Fishing;
-            if (itemClass.m_service == ItemClass.Service.HealthCare) return Category.Healthcare;
-            if (itemClass.m_service == ItemClass.Service.FireDepartment) return Category.FireDepartment;
-            if (itemClass.m_service == ItemClass.Service.Disaster) return Category.Disaster;
-            if (itemClass.m_service == ItemClass.Service.PoliceDepartment) return Category.Police;
-            if (itemClass.m_service == ItemClass.Service.Education) return Category.Education;
-            if (itemClass.m_service == ItemClass.Service.PlayerEducation) return Category.PlayerEducation;
-            if (itemClass.m_service == ItemClass.Service.Museums) return Category.PlayerEducation;
-            if (itemClass.m_service == ItemClass.Service.VarsitySports) return Category.VarsitySports;
-            if (itemClass.m_service == ItemClass.Service.PublicTransport) return Category.PublicTransport;
-            if (itemClass.m_service == ItemClass.Service.Tourism) return Category.PublicTransport;
-            if (itemClass.m_service == ItemClass.Service.Beautification) return Category.Beautification;
-            if (itemClass.m_service == ItemClass.Service.Monument) return Category.Monuments;
-
-            return Category.Unsorted;
-            //if (itemClass.m_service == ItemClass.Service.Wonders) return Category.Wonders; ???????
-
-            //return Category.None;
+            switch (itemClass.m_service)
+            {
+                case ItemClass.Service.Electricity: return Category.Electricity;
+                case ItemClass.Service.Water: return Category.Water;
+                case ItemClass.Service.Garbage: return Category.Garbage;
+                case ItemClass.Service.PlayerIndustry: return Category.PlayerIndustry;
+                case ItemClass.Service.Fishing: return Category.Fishing;
+                case ItemClass.Service.HealthCare: return Category.Healthcare;
+                case ItemClass.Service.FireDepartment: return Category.FireDepartment;
+                case ItemClass.Service.Disaster: return Category.Disaster;
+                case ItemClass.Service.PoliceDepartment: return Category.Police;
+                case ItemClass.Service.Education: return Category.Education;
+                case ItemClass.Service.PlayerEducation: return Category.PlayerEducation;
+                case ItemClass.Service.Museums: return Category.PlayerEducation;
+                case ItemClass.Service.VarsitySports: return Category.VarsitySports;
+                case ItemClass.Service.PublicTransport: return Category.PublicTransport;
+                case ItemClass.Service.Tourism: return Category.PublicTransport;
+                case ItemClass.Service.Beautification: return Category.Beautification;
+                case ItemClass.Service.Monument: return Category.Monuments;
+                case ItemClass.Service.ServicePoint: return Category.ServicePoint;
+                default: return Category.Unsorted;
+            }
         }
 
         public class CategoryIcons
         {
             public static readonly string[] atlases =
             {
+                "Ingame",
                 "Ingame",
                 "Ingame",
                 "Ingame",
@@ -102,6 +104,7 @@ namespace FindIt.GUI
                 "SubBarCampusAreaUniversity",
                 "SubBarCampusAreaVarsitySports",
                 "SubBarIndustryFishing",
+                "UIFilterServicePoints",
                 "ToolbarIconHelp"
             };
 
@@ -122,6 +125,7 @@ namespace FindIt.GUI
                 Translations.Translate("FIF_PLOP_C"), // campus
                 Translations.Translate("FIF_PLOP_V"), // varsity sports
                 Translations.Translate("FIF_PLOP_FI"), // fishing
+                Translations.Translate("FIF_PLOP_SP"), // service points
                 Translations.Translate("FIF_PROP_UNS") // unsorted
             };
         }
@@ -233,19 +237,19 @@ namespace FindIt.GUI
                 UISearchBox.instance.PickRandom();
             };
 
-            all = SamsamTS.UIUtils.CreateButton(this);
-            all.size = new Vector2(55, 35);
-            all.text = Translations.Translate("FIF_SE_IA");
-            all.relativePosition = new Vector3(randomIcon.relativePosition.x + last.width + 5, 5);
+            //all = SamsamTS.UIUtils.CreateButton(this);
+            //all.size = new Vector2(55, 35);
+            //all.text = Translations.Translate("FIF_SE_IA");
+            //all.relativePosition = new Vector3(randomIcon.relativePosition.x + last.width + 5, 5);
 
-            all.eventClick += (c, p) =>
-            {
-                for (int i = 0; i < (int)Category.All; i++)
-                {
-                    toggles[i].isChecked = true;
-                }
-                eventFilteringChanged(this, 0);
-            };
+            //all.eventClick += (c, p) =>
+            //{
+            //    for (int i = 0; i < (int)Category.All; i++)
+            //    {
+            //        toggles[i].isChecked = true;
+            //    }
+            //    eventFilteringChanged(this, 0);
+            //};
 
             width = parent.width;
         }

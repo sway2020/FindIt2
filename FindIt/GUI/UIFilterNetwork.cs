@@ -2,8 +2,8 @@
 // https://github.com/SamsamTS/CS-FindIt
 // Filter tabs panel for network
 
-using UnityEngine;
 using ColossalFramework.UI;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
@@ -20,6 +20,7 @@ namespace FindIt.GUI
             LargeRoads,
             Highway,
             Path,
+            ZonablePath,
             Fence,
             WaterStructures,
             Utility,
@@ -43,21 +44,24 @@ namespace FindIt.GUI
 
         public static Category GetCategory(Asset.NetworkType networkType)
         {
-            if (networkType == Asset.NetworkType.TinyRoads) return Category.TinyRoads;
-            if (networkType == Asset.NetworkType.SmallRoads) return Category.SmallRoads;
-            if (networkType == Asset.NetworkType.MediumRoads) return Category.MediumRoads;
-            if (networkType == Asset.NetworkType.LargeRoads) return Category.LargeRoads;
-            if (networkType == Asset.NetworkType.Highway) return Category.Highway;
-            if (networkType == Asset.NetworkType.Path) return Category.Path;
-            if (networkType == Asset.NetworkType.Fence) return Category.Fence;
-            if (networkType == Asset.NetworkType.WaterStructures) return Category.WaterStructures;
-            if (networkType == Asset.NetworkType.Utility) return Category.Utility;
-            if (networkType == Asset.NetworkType.Train) return Category.Train;
-            if (networkType == Asset.NetworkType.Metro) return Category.Metro;
-            if (networkType == Asset.NetworkType.Aircraft) return Category.Aircraft;
-            if (networkType == Asset.NetworkType.Unsorted) return Category.Unsorted;
-
-            return Category.None;
+            switch (networkType)
+            {
+                case Asset.NetworkType.TinyRoads: return Category.TinyRoads;
+                case Asset.NetworkType.SmallRoads: return Category.SmallRoads;
+                case Asset.NetworkType.MediumRoads: return Category.MediumRoads;
+                case Asset.NetworkType.LargeRoads: return Category.LargeRoads;
+                case Asset.NetworkType.Highway: return Category.Highway;
+                case Asset.NetworkType.Path: return Category.Path;
+                case Asset.NetworkType.ZonablePath: return Category.ZonablePath;
+                case Asset.NetworkType.Fence: return Category.Fence;
+                case Asset.NetworkType.WaterStructures: return Category.WaterStructures;
+                case Asset.NetworkType.Utility: return Category.Utility;
+                case Asset.NetworkType.Train: return Category.Train;
+                case Asset.NetworkType.Metro: return Category.Metro;
+                case Asset.NetworkType.Aircraft: return Category.Aircraft;
+                case Asset.NetworkType.Unsorted: return Category.Unsorted;
+                default: return Category.None;
+            }
         }
 
         public static bool IsOneWay(NetInfo info)
@@ -130,6 +134,7 @@ namespace FindIt.GUI
                 "Ingame",
                 "Ingame",
                 "Ingame",
+                "Ingame",
                 "FindItAtlas",
                 "FindItAtlas",
                 "FindItAtlas",
@@ -148,6 +153,7 @@ namespace FindIt.GUI
                 "SubBarRoadsLarge",
                 "SubBarRoadsHighway",
                 "SubBarLandscapingPaths",
+                "UIFilterSandstone",
                 "SubBarLandscapingFences",
                 "SubBarLandscapingWaterStructures",
                 "ToolbarIconElectricity",
@@ -172,6 +178,7 @@ namespace FindIt.GUI
                 Translations.Translate("FIF_NET_LGR"), // Large Roads
                 Translations.Translate("FIF_NET_HGHW"), // Highway
                 Translations.Translate("FIF_NET_PATH"), // Path
+                Translations.Translate("FIF_NET_ZPATH"), // Zonable Path
                 Translations.Translate("FIF_NET_WALL"), // Fence & Wall
                 Translations.Translate("FIF_NET_WAT"), // Water Structures
                 Translations.Translate("FIF_NET_UTI"), // Utility
@@ -268,9 +275,9 @@ namespace FindIt.GUI
             toggles = new UICheckBox[(int)Category.All];
             for (int i = 0; i < (int)Category.All; i++)
             {
-                toggles[i] = SamsamTS.UIUtils.CreateIconToggle(this, CategoryIcons.atlases[i], CategoryIcons.spriteNames[i], CategoryIcons.spriteNames[i], 0.4f, 34f);
+                toggles[i] = SamsamTS.UIUtils.CreateIconToggle(this, CategoryIcons.atlases[i], CategoryIcons.spriteNames[i], CategoryIcons.spriteNames[i], 0.4f);
                 toggles[i].tooltip = CategoryIcons.tooltips[i] + "\n" + Translations.Translate("FIF_SE_SC");
-                toggles[i].relativePosition = new Vector3(5 + 37 * i, 5);
+                toggles[i].relativePosition = new Vector3(5 + 36.5f * i, 5);
                 toggles[i].isChecked = true;
                 toggles[i].readOnly = true;
                 toggles[i].checkedBoxObject.isInteractive = false; // Don't eat my double click event please
@@ -330,7 +337,7 @@ namespace FindIt.GUI
             {
                 for (int i = 1; i < (int)Category.All; i++)
                 {
-                    toggles[i].relativePosition = new Vector3(5 + 37 * (i - 1), 5);
+                    toggles[i].relativePosition = new Vector3(5 + 36.5f * (i - 1), 5);
                 }
             }
 

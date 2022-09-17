@@ -1,16 +1,16 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using UnityEngine;
-using ColossalFramework;
+﻿using ColossalFramework;
 using FindIt.GUI;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace FindIt
 {
     public partial class AssetTagList
     {
         public List<Asset> matches = new List<Asset>();
-        private HashSet<char> searchPrefixes = new HashSet<char>
+        private readonly HashSet<char> searchPrefixes = new HashSet<char>
         {
             '!', // NOT
             '#', // custom tag only
@@ -235,7 +235,7 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckAssetTypeFilter(Asset asset, UISearchBox.DropDownOptions filter)
+        private static bool CheckAssetTypeFilter(Asset asset, UISearchBox.DropDownOptions filter)
         {
             if (asset.assetType != Asset.AssetType.Network && filter == UISearchBox.DropDownOptions.Network) return false;
             if (asset.assetType != Asset.AssetType.Prop && filter == UISearchBox.DropDownOptions.Prop) return false;
@@ -273,14 +273,14 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckGrowableRICOFilter(Asset asset, UISearchBox.DropDownOptions filter)
+        private static bool CheckGrowableRICOFilter(Asset asset, UISearchBox.DropDownOptions filter)
         {
             BuildingInfo buildingInfo = asset.prefab as BuildingInfo;
             // Distinguish growable and rico
             if ((filter == UISearchBox.DropDownOptions.Growable) && (asset.assetType == Asset.AssetType.Rico)) return false;
             if ((filter == UISearchBox.DropDownOptions.Rico) && (asset.assetType == Asset.AssetType.Growable)) return false;
             // filter by size
-            if (!CheckBuildingSize(asset.size, UISearchBox.instance.buildingSizeFilterIndex)) return false;
+            if (!CheckBuildingSize(asset.size, UISearchBox.instance.BuildingSizeFilterIndex)) return false;
             // filter by growable type
             if (!UIFilterGrowable.instance.IsAllSelected())
             {
@@ -290,11 +290,11 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckPloppableFilter(Asset asset)
+        private static bool CheckPloppableFilter(Asset asset)
         {
             BuildingInfo buildingInfo = asset.prefab as BuildingInfo;
             // filter by size
-            if (!CheckBuildingSize(asset.size, UISearchBox.instance.buildingSizeFilterIndex)) return false;
+            if (!CheckBuildingSize(asset.size, UISearchBox.instance.BuildingSizeFilterIndex)) return false;
             // filter by ploppable type
             if (!UIFilterPloppable.instance.IsAllSelected())
             {
@@ -304,7 +304,7 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckPropFilter(Asset asset)
+        private static bool CheckPropFilter(Asset asset)
         {
             // filter by prop type
             if (!UIFilterProp.instance.IsAllSelected())
@@ -315,7 +315,7 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckTreeFilter(Asset asset)
+        private static bool CheckTreeFilter(Asset asset)
         {
             // filter by tree type
             if (!UIFilterTree.instance.IsAllSelected())
@@ -326,7 +326,7 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckNetworkFilter(Asset asset)
+        private static bool CheckNetworkFilter(Asset asset)
         {
             // filter by network type
             if (!UIFilterNetwork.instance.IsAllSelected())
@@ -407,7 +407,7 @@ namespace FindIt
         // index 5 = size 5 - 8
         // index 6 = size 9 - 12
         // index 7 = size 13+
-        private bool CheckBuildingSize(Vector2 assetSize, Vector2 buildingSizeFilterIndex)
+        private static bool CheckBuildingSize(Vector2 assetSize, Vector2 buildingSizeFilterIndex)
         {
             if (buildingSizeFilterIndex.x > 0.0f && buildingSizeFilterIndex.y > 0.0f)
             {
@@ -426,7 +426,7 @@ namespace FindIt
             return true;
         }
 
-        public bool CheckBuildingSizeXY(float assetSizeXY, float buildingSizeFilterIndex)
+        public static bool CheckBuildingSizeXY(float assetSizeXY, float buildingSizeFilterIndex)
         {
             if (buildingSizeFilterIndex == 0.0f) return true; // all
             if (buildingSizeFilterIndex < 5.0f) // size of 1 - 4
@@ -595,7 +595,7 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckTerrainConforming(Asset asset, bool checkTCFlag)
+        private static bool CheckTerrainConforming(Asset asset, bool checkTCFlag)
         {
 
             if (asset.assetType == Asset.AssetType.Decal || asset.assetType == Asset.AssetType.Tree) return checkTCFlag;
@@ -649,7 +649,7 @@ namespace FindIt
             return true;
         }
 
-        private bool CheckDLCFilters(SteamHelper.DLC_BitMask dlc)
+        private static bool CheckDLCFilters(SteamHelper.DLC_BitMask dlc)
         {
             UIFilterExtraPanel.DLCDropDownOptions selectedOption = (UIFilterExtraPanel.DLCDropDownOptions)UISearchBox.instance.extraFiltersPanel.dlcDropDownMenu.selectedIndex;
 
@@ -698,6 +698,11 @@ namespace FindIt
                 case UIFilterExtraPanel.DLCDropDownOptions.Parklife:
                     {
                         if ((dlc & SteamHelper.DLC_BitMask.ParksDLC) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.PlazasAndPromenades:
+                    {
+                        if ((dlc & SteamHelper.DLC_BitMask.PlazasAndPromenadesDLC) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.Industries:
@@ -780,13 +785,23 @@ namespace FindIt
                         if ((dlc & SteamHelper.DLC_BitMask.ModderPack10) == 0) return false;
                         break;
                     }
+                case UIFilterExtraPanel.DLCDropDownOptions.MidCenturyModern:
+                    {
+                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack11) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.SeasideResorts:
+                    {
+                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack12) == 0) return false;
+                        break;
+                    }
                 default:
                     break;
             }
 
             return true;
         }
-        private bool CheckDistrictStyleFilters(PrefabInfo prefab)
+        private static bool CheckDistrictStyleFilters(PrefabInfo prefab)
         {
             BuildingInfo buildingInfo = prefab as BuildingInfo;
             if (buildingInfo == null) return false;
@@ -844,7 +859,7 @@ namespace FindIt
 
             return score;
         }
-        private float GetScore(string keyword, string tag, Dictionary<string, int> dico)
+        private static float GetScore(string keyword, string tag, Dictionary<string, int> dico)
         {
             int index = tag.IndexOf(keyword);
             float scoreMultiplier = 1f;

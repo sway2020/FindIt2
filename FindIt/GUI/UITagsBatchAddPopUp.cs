@@ -1,10 +1,10 @@
 ﻿// modified from SamsamTS's original Find It mod
 // https://github.com/SamsamTS/CS-FindIt
 
-using UnityEngine;
 using ColossalFramework.UI;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace FindIt.GUI
 {

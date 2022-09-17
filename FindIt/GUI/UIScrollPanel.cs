@@ -1,12 +1,12 @@
 ﻿// modified from SamsamTS's original Find It mod
 // https://github.com/SamsamTS/CS-FindIt
 
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using ColossalFramework;
 using ColossalFramework.PlatformServices;
 using ColossalFramework.UI;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace FindIt.GUI
 {
@@ -320,11 +320,15 @@ namespace FindIt.GUI
             }
         }
 
-        public void SimulateClickSafe() {
-            try {
+        public void SimulateClickSafe()
+        {
+            try
+            {
                 SimulatingClick = true;
                 this.component.SimulateClick();
-            } finally {
+            }
+            finally
+            {
                 SimulatingClick = false;
             }
         }
@@ -719,61 +723,73 @@ namespace FindIt.GUI
 
         public static string GetDLCSpriteToolTip(SteamHelper.DLC_BitMask dlc)
         {
-            if (dlc == SteamHelper.DLC_BitMask.DeluxeDLC) return "Deluxe Upgrade Pack";
-            else if (dlc == SteamHelper.DLC_BitMask.AfterDarkDLC) return "After Dark DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.SnowFallDLC) return "Snow Fall DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.NaturalDisastersDLC) return "Natural Disasters DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.InMotionDLC) return "Mass Transit DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.GreenCitiesDLC) return "Green Cities DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.ParksDLC) return "Parklife DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.IndustryDLC) return "Industries DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.CampusDLC) return "Campus DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.UrbanDLC) return "Sunset Harbor DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.AirportDLC) return "Airports DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.Football) return "Match Day DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.Football2345) return "Stadiums: European Club Pack DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.OrientalBuildings) return "Pearls from the East DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.MusicFestival) return "Concerts DLC";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack1) return "Art Deco Content Creator Pack by Shroomblaze";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack2) return "High-Tech Buildings Content Creator Pack by GCVos";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack3) return "European Suburbias Content Creator Pack by Avanya";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack4) return "University City Content Creator Pack by KingLeno";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack5) return "Modern City Center Content Creator Pack by AmiPolizeiFunk";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack6) return "Modern Japan Content Creator Pack by Ryuichi Kaminogi";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack7) return "Train Stations Content Creator Pack by BadPeanut";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack8) return "Bridges & Piers Content Creator Pack by Armesto";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack10) return "Vehicles of the World Content Creator Pack by bsquiklehausen";
-            else if (dlc == SteamHelper.DLC_BitMask.None) return "";
-            else return "Unknown DLC";
+            switch (dlc)
+            {
+                case SteamHelper.DLC_BitMask.DeluxeDLC: return "Deluxe Upgrade Pack";
+                case SteamHelper.DLC_BitMask.AfterDarkDLC: return "After Dark DLC";
+                case SteamHelper.DLC_BitMask.SnowFallDLC: return "Snow Fall DLC";
+                case SteamHelper.DLC_BitMask.NaturalDisastersDLC: return "Natural Disasters DLC";
+                case SteamHelper.DLC_BitMask.InMotionDLC: return "Mass Transit DLC";
+                case SteamHelper.DLC_BitMask.GreenCitiesDLC: return "Green Cities DLC";
+                case SteamHelper.DLC_BitMask.ParksDLC: return "Parklife DLC";
+                case SteamHelper.DLC_BitMask.PlazasAndPromenadesDLC: return "Plazas & Promenades DLC";
+                case SteamHelper.DLC_BitMask.IndustryDLC: return "Industries DLC";
+                case SteamHelper.DLC_BitMask.CampusDLC: return "Campus DLC";
+                case SteamHelper.DLC_BitMask.UrbanDLC: return "Sunset Harbor DLC";
+                case SteamHelper.DLC_BitMask.AirportDLC: return "Airports DLC";
+                case SteamHelper.DLC_BitMask.Football: return "Match Day DLC";
+                case SteamHelper.DLC_BitMask.Football2345: return "Stadiums: European Club Pack DLC";
+                case SteamHelper.DLC_BitMask.OrientalBuildings: return "Pearls from the East DLC";
+                case SteamHelper.DLC_BitMask.MusicFestival: return "Concerts DLC";
+                case SteamHelper.DLC_BitMask.ModderPack1: return "Art Deco Content Creator Pack by Shroomblaze";
+                case SteamHelper.DLC_BitMask.ModderPack2: return "High-Tech Buildings Content Creator Pack by GCVos";
+                case SteamHelper.DLC_BitMask.ModderPack3: return "European Suburbias Content Creator Pack by Avanya";
+                case SteamHelper.DLC_BitMask.ModderPack4: return "University City Content Creator Pack by KingLeno";
+                case SteamHelper.DLC_BitMask.ModderPack5: return "Modern City Center Content Creator Pack by AmiPolizeiFunk";
+                case SteamHelper.DLC_BitMask.ModderPack6: return "Modern Japan Content Creator Pack by Ryuichi Kaminogi";
+                case SteamHelper.DLC_BitMask.ModderPack7: return "Train Stations Content Creator Pack by BadPeanut";
+                case SteamHelper.DLC_BitMask.ModderPack8: return "Bridges & Piers Content Creator Pack by Armesto";
+                case SteamHelper.DLC_BitMask.ModderPack10: return "Vehicles of the World Content Creator Pack by bsquiklehausen";
+                case SteamHelper.DLC_BitMask.ModderPack11: return "Mid-Century Modern Content Creator Pack by REV0";
+                case SteamHelper.DLC_BitMask.ModderPack12: return "Seaside Resorts Content Creator Pack by Gèze";
+                case SteamHelper.DLC_BitMask.None: return "";
+                default: return "Unknown DLC";
+            }
         }
 
         public static string GetDLCSpriteName(SteamHelper.DLC_BitMask dlc)
         {
-            if (dlc == SteamHelper.DLC_BitMask.DeluxeDLC) return "DeluxeIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.AfterDarkDLC) return "ADIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.SnowFallDLC) return "WWIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.NaturalDisastersDLC) return "NaturalDisastersIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.InMotionDLC) return "MassTransitIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.GreenCitiesDLC) return "GreenCitiesIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.ParksDLC) return "ParkLifeIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.IndustryDLC) return "IndustriesIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.CampusDLC) return "CampusIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.UrbanDLC) return "DonutIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.AirportDLC) return "AirportIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.Football) return "MDIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.Football2345) return "StadiumsDLCIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.OrientalBuildings) return "ChineseBuildingsTagIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.MusicFestival) return "ConcertsIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack1) return "ArtDecoIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack2) return "HighTechIcon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack3) return "Modderpack3Icon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack4) return "Modderpack4Icon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack5) return "Modderpack5Icon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack6) return "Modderpack6Icon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack7) return "Modderpack7Icon";
-            else if (dlc == SteamHelper.DLC_BitMask.ModderPack8) return "Modderpack8Icon";
-            else if (dlc == SteamHelper.DLC_BitMask.None) return "";
-            else return "ToolbarIconHelp";
+            switch (dlc)
+            {
+                case SteamHelper.DLC_BitMask.DeluxeDLC: return "DeluxeIcon";
+                case SteamHelper.DLC_BitMask.AfterDarkDLC: return "ADIcon";
+                case SteamHelper.DLC_BitMask.SnowFallDLC: return "WWIcon";
+                case SteamHelper.DLC_BitMask.NaturalDisastersDLC: return "NaturalDisastersIcon";
+                case SteamHelper.DLC_BitMask.InMotionDLC: return "MassTransitIcon";
+                case SteamHelper.DLC_BitMask.GreenCitiesDLC: return "GreenCitiesIcon";
+                case SteamHelper.DLC_BitMask.ParksDLC: return "ParkLifeIcon";
+                case SteamHelper.DLC_BitMask.PlazasAndPromenadesDLC: return "PlazasPromenadesIcon";
+                case SteamHelper.DLC_BitMask.IndustryDLC: return "IndustriesIcon";
+                case SteamHelper.DLC_BitMask.CampusDLC: return "CampusIcon";
+                case SteamHelper.DLC_BitMask.UrbanDLC: return "DonutIcon";
+                case SteamHelper.DLC_BitMask.AirportDLC: return "AirportIcon";
+                case SteamHelper.DLC_BitMask.Football: return "MDIcon";
+                case SteamHelper.DLC_BitMask.Football2345: return "StadiumsDLCIcon";
+                case SteamHelper.DLC_BitMask.OrientalBuildings: return "ChineseBuildingsTagIcon";
+                case SteamHelper.DLC_BitMask.MusicFestival: return "ConcertsIcon";
+                case SteamHelper.DLC_BitMask.ModderPack1: return "ArtDecoIcon";
+                case SteamHelper.DLC_BitMask.ModderPack2: return "HighTechIcon";
+                case SteamHelper.DLC_BitMask.ModderPack3: return "Modderpack3Icon";
+                case SteamHelper.DLC_BitMask.ModderPack4: return "Modderpack4Icon";
+                case SteamHelper.DLC_BitMask.ModderPack5: return "Modderpack5Icon";
+                case SteamHelper.DLC_BitMask.ModderPack6: return "Modderpack6Icon";
+                case SteamHelper.DLC_BitMask.ModderPack7: return "Modderpack7Icon";
+                case SteamHelper.DLC_BitMask.ModderPack8: return "Modderpack8Icon";
+                case SteamHelper.DLC_BitMask.ModderPack11: return "MidCenturyModernIcon";
+                case SteamHelper.DLC_BitMask.ModderPack12: return "SeasideResortsIcon";
+                case SteamHelper.DLC_BitMask.None: return "";
+                default: return "ToolbarIconHelp";
+            }
         }
     }
 }
