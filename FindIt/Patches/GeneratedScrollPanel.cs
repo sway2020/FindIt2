@@ -179,9 +179,9 @@ namespace FindIt
                                 if (!asset.prefab.m_isCustomContent)
                                 {
                                     m_dlcSprite.tooltip = "Tree & Vehicle Props Mod";
-                                    if (asset.prefab.m_dlcRequired != SteamHelper.DLC_BitMask.None)
+                                    if (asset.prefab.m_requiredExpansion != SteamHelper.ExpansionBitMask.None || asset.prefab.m_requiredModderPack != SteamHelper.ModderPackBitMask.None)
                                     {
-                                        m_dlcSprite.tooltip += $"\n{UIScrollPanelItem.GetDLCSpriteToolTip(asset.prefab.m_dlcRequired)}";
+                                        m_dlcSprite.tooltip += $"\n{UIScrollPanelItem.GetDLCSpriteToolTip(asset.prefab.m_requiredExpansion, asset.prefab.m_requiredModderPack)}";
                                     }
                                 }
                                 else
@@ -210,9 +210,9 @@ namespace FindIt
                                 if (!asset.prefab.m_isCustomContent)
                                 {
                                     m_dlcSprite.tooltip = "Non-terrain Conforming Props Mod";
-                                    if (asset.prefab.m_dlcRequired != SteamHelper.DLC_BitMask.None)
+                                    if (asset.prefab.m_requiredExpansion != SteamHelper.ExpansionBitMask.None || asset.prefab.m_requiredModderPack != SteamHelper.ModderPackBitMask.None)
                                     {
-                                        m_dlcSprite.tooltip += $"\n{UIScrollPanelItem.GetDLCSpriteToolTip(asset.prefab.m_dlcRequired)}";
+                                        m_dlcSprite.tooltip += $"\n{UIScrollPanelItem.GetDLCSpriteToolTip(asset.prefab.m_requiredExpansion, asset.prefab.m_requiredModderPack)}";
                                     }
                                 }
                                 else
@@ -234,7 +234,7 @@ namespace FindIt
                             // vanilla assets, show corresponding dlc icons
                             else if (!asset.prefab.m_isCustomContent)
                             {
-                                SetDLCSprite(m_dlcSprite, asset.prefab.m_dlcRequired);
+                                SetDLCSprite(m_dlcSprite, asset.prefab.m_requiredExpansion, asset.prefab.m_requiredModderPack);
                             }
                             // custom assets, show steam icon(has workshop info) or yellow cogwheel icon(no workshop info)
                             else
@@ -310,12 +310,12 @@ namespace FindIt
             }
         }
 
-        private static void SetDLCSprite(UISprite sprite, SteamHelper.DLC_BitMask dlc)
+        private static void SetDLCSprite(UISprite sprite, SteamHelper.ExpansionBitMask expansion, SteamHelper.ModderPackBitMask modderPack)
         {
-            if (dlc == SteamHelper.DLC_BitMask.None) return;
+            if (expansion == SteamHelper.ExpansionBitMask.None && modderPack == SteamHelper.ModderPackBitMask.None) return;
             sprite.isVisible = true;
-            sprite.tooltip = UIScrollPanelItem.GetDLCSpriteToolTip(dlc);
-            sprite.spriteName = UIScrollPanelItem.GetDLCSpriteName(dlc);
+            sprite.tooltip = UIScrollPanelItem.GetDLCSpriteToolTip(expansion, modderPack);
+            sprite.spriteName = UIScrollPanelItem.GetDLCSpriteName(expansion, modderPack);
         }
     }
 }

@@ -12,33 +12,15 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9";
+        public const string version = "2.9.2";
         public const bool isBeta = false;
         public const bool debug = false;
-        public const double updateNoticeDate = 20220914;
+        public const double updateNoticeDate = 20221115;
         public const string updateNotice =
 
-        "Add support for the new game update and the new DLC and 2 Content Creator Packs:\n" +
-        "  Plazas & Promenades DLC\n" +
-        "  Mid-Century Modern CCP by REV0\n" +
-        "  Seaside Resorts CCP by Gèze\n\n" +
+        "- Fix DLC detection mechanism\n\n" +
 
-        "- Fix the Harmony patch broken by the new game update\n\n" +
-
-        "- Add 3 growable filter tabs for the wall-to-wall types introduced by the new DLC\n\n" +
-
-        "- Add a network filter tab for the new zonable paths introduced by the new DLC\n\n" +
-
-        "- Add a ploppable filter tab for the new service points introduced by the new DLC\n\n" +
-
-        "- Update district style filter to include the Mid-Century Modern style by REV0\n\n" +
-
-        "- Update DLC filter and Creator filter to include the new DLC and CCPs\n\n" +
-
-        "- Show icons of the new DLC & CCPs on asset thumbnails\n\n" +
-
-        "- UI changes\n";
-        
+        "- Add support for the Skyscrapers and Heart of Korea modder packs\n\n";
 
         public string Name
         {

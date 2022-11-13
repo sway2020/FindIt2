@@ -9,6 +9,7 @@ using ColossalFramework.Packaging;
 using ColossalFramework.PlatformServices;
 using EManagersLib.API;
 using FindIt.GUI;
+using ICities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -332,7 +333,7 @@ namespace FindIt
 
                     // filter out network assets that are not supposed to be used by players directly
                     else if (netPrefab.category == PrefabInfo.kDefaultCategory || netPrefab.m_Thumbnail.IsNullOrWhiteSpace() ||
-                        (netPrefab.m_dlcRequired == SteamHelper.DLC_BitMask.PlazasAndPromenadesDLC && (netPrefab.name.EndsWith("Elevated") || (netPrefab.name.EndsWith("Bridge")))) ||
+                        ((netPrefab.m_requiredExpansion & SteamHelper.ExpansionBitMask.PlazasAndPromenades) != 0 && (netPrefab.name.EndsWith("Elevated") || (netPrefab.name.EndsWith("Bridge")))) ||
                         (netPrefab.name != "Pedestrian Pavement" && netPrefab.m_Thumbnail == "ThumbnailBuildingBeautificationPedestrianPavement"))
                     {
                         filtered += prefab.name + ", ";
@@ -576,7 +577,7 @@ namespace FindIt
                         tvppAssets.Add(asset);
 
                         // extra handling for vehicle of the world CCP & TVP mod combination
-                        if (asset.prefab.m_dlcRequired == SteamHelper.DLC_BitMask.ModderPack10)
+                        if (asset.prefab.m_requiredModderPack == SteamHelper.ModderPackBitMask.Pack10)
                         {
                             asset.author = "bsquiklehausen";
                             asset.isCCP = true;
@@ -754,7 +755,7 @@ namespace FindIt
                 constructionCost = 7000;
                 maintenanceCost = 600;
                 thumbnail = "Runway";
-                prefab.m_dlcRequired = SteamHelper.DLC_BitMask.UrbanDLC; // Sunset Harbor
+                prefab.m_requiredExpansion |= SteamHelper.ExpansionBitMask.SunsetHarbor; // Sunset Harbor
             }
             else if (prefab.name == "Airplane Taxiway")
             {

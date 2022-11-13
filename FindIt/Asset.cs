@@ -94,7 +94,7 @@ namespace FindIt
                     subService = m_prefab.GetSubService();
 
                     // check if an asset is from a content creator pack and set up author names
-                    isCCP = CheckCCP(m_prefab.m_dlcRequired);
+                    isCCP = CheckCCP(m_prefab.m_requiredModderPack);
 
                     BuildingInfo buildingPrefab = m_prefab as BuildingInfo;
                     if (buildingPrefab != null)
@@ -614,20 +614,22 @@ namespace FindIt
             findIt2Description += "\n";
         }
 
-        private bool CheckCCP(SteamHelper.DLC_BitMask dlc)
+        private bool CheckCCP(SteamHelper.ModderPackBitMask modderPack)
         {
-            switch (dlc)
+            switch (modderPack)
             {
-                case SteamHelper.DLC_BitMask.ModderPack1: author = "Shroomblaze"; break;
-                case SteamHelper.DLC_BitMask.ModderPack2: author = "GCVos"; break;
-                case SteamHelper.DLC_BitMask.ModderPack3: author = "Avanya"; break;
-                case SteamHelper.DLC_BitMask.ModderPack4: author = "KingLeno"; break;
-                case SteamHelper.DLC_BitMask.ModderPack5: author = "AmiPolizeiFunk"; break;
-                case SteamHelper.DLC_BitMask.ModderPack6: author = "Ryuichi Kaminogi"; break;
-                case SteamHelper.DLC_BitMask.ModderPack7: author = "BadPeanut"; break;
-                case SteamHelper.DLC_BitMask.ModderPack8: author = "Armesto"; break;
-                case SteamHelper.DLC_BitMask.ModderPack11: author = "REV0"; break;
-                case SteamHelper.DLC_BitMask.ModderPack12: author = "Gèze"; break;
+                case SteamHelper.ModderPackBitMask.Pack1: author = "Shroomblaze"; break;
+                case SteamHelper.ModderPackBitMask.Pack2: author = "GCVos"; break;
+                case SteamHelper.ModderPackBitMask.Pack3: author = "Avanya"; break;
+                case SteamHelper.ModderPackBitMask.Pack4: author = "KingLeno"; break;
+                case SteamHelper.ModderPackBitMask.Pack5: author = "AmiPolizeiFunk"; break;
+                case SteamHelper.ModderPackBitMask.Pack6: author = "Ryuichi Kaminogi"; break;
+                case SteamHelper.ModderPackBitMask.Pack7: author = "BadPeanut"; break;
+                case SteamHelper.ModderPackBitMask.Pack8: author = "Armesto"; break;
+                case SteamHelper.ModderPackBitMask.Pack11: author = "REV0"; break;
+                case SteamHelper.ModderPackBitMask.Pack12: author = "Gèze"; break;
+                case SteamHelper.ModderPackBitMask.Pack13: author = "Feindbold"; break;
+                case SteamHelper.ModderPackBitMask.Pack14: author = "ELVIS"; break;
                 default: return false;
             }
             return true;
