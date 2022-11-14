@@ -12,18 +12,15 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.1";
-        public const bool isBeta = true;
+        public const string version = "2.9.2";
+        public const bool isBeta = false;
         public const bool debug = false;
-        public const double updateNoticeDate = 20221001;
+        public const double updateNoticeDate = 20221115;
         public const string updateNotice =
 
-        "- Allow searching for asset names (especially roads) that have spaces and + signs in their name\n\n" +
+        "- Fix DLC detection mechanism\n\n" +
 
-        "  Contributed by JadHajjar\n\n" +
-
-        "- Update translations\n\n";
-        
+        "- Add support for the Skyscrapers and Heart of Korea modder packs\n\n";
 
         public string Name
         {

@@ -551,7 +551,7 @@ namespace FindIt
                 // DLC & CCP filter
                 case UIFilterExtraPanel.DropDownOptions.DLC:
                     {
-                        if (!CheckDLCFilters(asset.prefab.m_dlcRequired)) return false;
+                        if (!CheckDLCFilters(asset.prefab.m_requiredExpansion, asset.prefab.m_requiredModderPack)) return false;
                         break;
                     }
                 // District Style filter
@@ -654,7 +654,7 @@ namespace FindIt
             return true;
         }
 
-        private static bool CheckDLCFilters(SteamHelper.DLC_BitMask dlc)
+        private static bool CheckDLCFilters(SteamHelper.ExpansionBitMask expansion, SteamHelper.ModderPackBitMask modderPack)
         {
             UIFilterExtraPanel.DLCDropDownOptions selectedOption = (UIFilterExtraPanel.DLCDropDownOptions)UISearchBox.instance.extraFiltersPanel.dlcDropDownMenu.selectedIndex;
 
@@ -662,142 +662,152 @@ namespace FindIt
             {
                 case UIFilterExtraPanel.DLCDropDownOptions.BaseGame:
                     {
-                        if ((dlc | SteamHelper.DLC_BitMask.None) != 0) return false;
+                        if ((expansion | SteamHelper.ExpansionBitMask.None) != 0 || (modderPack | SteamHelper.ModderPackBitMask.None) != 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.DeluxeUpgrade:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.DeluxeDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.Deluxe) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.AfterDark:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.AfterDarkDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.AfterDark) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.Airports:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.AirportDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.Airport) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.SnowFall:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.SnowFallDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.SnowFall) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.NaturalDisasters:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.NaturalDisastersDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.NaturalDisasters) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.MassTransit:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.InMotionDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.InMotion) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.GreenCities:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.GreenCitiesDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.GreenCities) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.Parklife:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ParksDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.Parks) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.PlazasAndPromenades:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.PlazasAndPromenadesDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.PlazasAndPromenades) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.Industries:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.IndustryDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.Industry) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.Campus:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.CampusDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.Campus) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.SunsetHarbor:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.UrbanDLC) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.SunsetHarbor) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.MatchDay:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.Football) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.Football) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.Stadiums:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.Football2345) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.Football2345) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.PearlsFromTheEast:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.OrientalBuildings) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.OrientalBuildings) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.Concerts:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.MusicFestival) == 0) return false;
+                        if ((expansion & SteamHelper.ExpansionBitMask.MusicFestival) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.ArtDeco:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack1) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack1) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.HighTechBuildings:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack2) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack2) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.EuropeanSuburbias:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack3) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack3) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.UniverisityCity:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack4) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack4) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.ModernCityCenter:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack5) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack5) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.ModernJapan:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack6) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack6) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.TrainStations:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack7) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack7) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.BridgesPiers:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack8) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack8) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.VehiclesoftheWorld:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack10) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack10) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.MidCenturyModern:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack11) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack11) == 0) return false;
                         break;
                     }
                 case UIFilterExtraPanel.DLCDropDownOptions.SeasideResorts:
                     {
-                        if ((dlc & SteamHelper.DLC_BitMask.ModderPack12) == 0) return false;
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack12) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.Skyscrapers:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack13) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.HeartOfKorea:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack14) == 0) return false;
                         break;
                     }
                 default:

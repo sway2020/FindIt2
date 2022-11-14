@@ -115,6 +115,8 @@ namespace FindIt.GUI
             VehiclesoftheWorld,
             MidCenturyModern,
             SeasideResorts,
+            Skyscrapers,
+            HeartOfKorea,
             Concerts,
             DeluxeUpgrade,
             MatchDay,
@@ -487,6 +489,8 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Vehicles of the World CCP");
             dlcDropDownMenu.AddItem("Mid-Century Modern CCP");
             dlcDropDownMenu.AddItem("Seaside Resorts CCP");
+            dlcDropDownMenu.AddItem("Skyscrapers CCP");
+            dlcDropDownMenu.AddItem("Heart of Korea CCP");
             dlcDropDownMenu.AddItem("Concerts DLC");
             dlcDropDownMenu.AddItem("Deluxe Upgrade Pack");
             dlcDropDownMenu.AddItem("Match Day DLC");
@@ -615,6 +619,7 @@ namespace FindIt.GUI
                 else if (style.Name.Equals(DistrictStyle.kEuropeanSuburbiaStyleName)) list.Add("European Suburbia (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack5StyleName)) list.Add("Modern City Center (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack11StyleName)) list.Add("Mid-Century Modern (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack14StyleName)) list.Add("Heart of Korea (" + style.Count.ToString() + ")");
                 else list.Add(style.FullName + " (" + style.Count.ToString() + ")");
             }
 
