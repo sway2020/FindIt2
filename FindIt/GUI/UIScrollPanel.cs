@@ -740,6 +740,7 @@ namespace FindIt.GUI
                     case SteamHelper.ExpansionBitMask.PlazasAndPromenades: return "Plazas & Promenades DLC";
                     case SteamHelper.ExpansionBitMask.Industry: return "Industries DLC";
                     case SteamHelper.ExpansionBitMask.Campus: return "Campus DLC";
+                    case SteamHelper.ExpansionBitMask.FinancialDistricts: return "Financial Districts DLC";
                     case SteamHelper.ExpansionBitMask.SunsetHarbor: return "Sunset Harbor DLC";
                     case SteamHelper.ExpansionBitMask.Airport: return "Airports DLC";
                     case SteamHelper.ExpansionBitMask.Football: return "Match Day DLC";
@@ -793,6 +794,7 @@ namespace FindIt.GUI
                     case SteamHelper.ExpansionBitMask.PlazasAndPromenades: return "PlazasPromenadesIcon";
                     case SteamHelper.ExpansionBitMask.Industry: return "IndustriesIcon";
                     case SteamHelper.ExpansionBitMask.Campus: return "CampusIcon";
+                    case SteamHelper.ExpansionBitMask.FinancialDistricts: return "FinancialDistrictsIcon";
                     case SteamHelper.ExpansionBitMask.SunsetHarbor: return "DonutIcon";
                     case SteamHelper.ExpansionBitMask.Airport: return "AirportIcon";
                     case SteamHelper.ExpansionBitMask.Football: return "MDIcon";

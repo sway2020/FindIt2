@@ -25,6 +25,7 @@ namespace FindIt.GUI
             CommercialWallToWall,
             OfficeGeneric,
             OfficeHightech,
+            OfficeFinancial,
             OfficeWallToWall,
             Industrial,
             Farming,
@@ -53,6 +54,7 @@ namespace FindIt.GUI
                 "Thumbnails",
                 "Thumbnails",
                 "Ingame",
+                "Ingame",
                 "Thumbnails",
                 "Ingame",
                 "Ingame",
@@ -76,6 +78,7 @@ namespace FindIt.GUI
                 "IconPolicyCommercialWallToWall",
                 "ZoningOffice",
                 "DistrictSpecializationHightech",
+                "IconPolicyFinancial",
                 "IconPolicyOfficeWallToWall",
                 "ZoningIndustrial",
                 "IconPolicyFarming",
@@ -100,6 +103,7 @@ namespace FindIt.GUI
                 Translations.Translate("FIF_GR_CW2W"), // commercial wall-to-wall
                 Translations.Translate("FIF_GR_O"), // office
                 Translations.Translate("FIF_GR_ITC"), // IT cluster
+                Translations.Translate("FIF_GR_FD"), // Financial Districts
                 Translations.Translate("FIF_GR_OW2W"), // office wall-to-wall
                 Translations.Translate("FIF_GR_GI"), // industrial
                 Translations.Translate("FIF_GR_FAI"), // farming
@@ -137,6 +141,7 @@ namespace FindIt.GUI
                 case ItemClass.SubService.IndustrialOre: return Category.Ore;
                 case ItemClass.SubService.OfficeGeneric: return Category.OfficeGeneric;
                 case ItemClass.SubService.OfficeHightech: return Category.OfficeHightech;
+                case ItemClass.SubService.OfficeFinancial: return Category.OfficeFinancial;
                 case ItemClass.SubService.OfficeWallToWall: return Category.OfficeWallToWall;
                 default: return Category.Unsorted;
             }

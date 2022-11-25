@@ -96,6 +96,7 @@ namespace FindIt.GUI
             AfterDark,
             Airports,
             Campus,
+            FinancialDistricts,
             GreenCities,
             Industries,
             MassTransit,
@@ -470,6 +471,7 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("After Dark DLC");
             dlcDropDownMenu.AddItem("Airports DLC");
             dlcDropDownMenu.AddItem("Campus DLC");
+            dlcDropDownMenu.AddItem("Financial Districts DLC");
             dlcDropDownMenu.AddItem("Green Cities DLC");
             dlcDropDownMenu.AddItem("Industries DLC");
             dlcDropDownMenu.AddItem("Mass Transit DLC");
