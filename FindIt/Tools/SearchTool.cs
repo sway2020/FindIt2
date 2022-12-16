@@ -720,6 +720,11 @@ namespace FindIt
                         if ((expansion & SteamHelper.ExpansionBitMask.Campus) == 0) return false;
                         break;
                     }
+                case UIFilterExtraPanel.DLCDropDownOptions.FinancialDistricts:
+                    {
+                        if ((expansion & SteamHelper.ExpansionBitMask.FinancialDistricts) == 0) return false;
+                        break;
+                    }
                 case UIFilterExtraPanel.DLCDropDownOptions.SunsetHarbor:
                     {
                         if ((expansion & SteamHelper.ExpansionBitMask.SunsetHarbor) == 0) return false;

@@ -12,15 +12,13 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.2";
+        public const string version = "2.9.3";
         public const bool isBeta = false;
         public const bool debug = false;
-        public const double updateNoticeDate = 20221115;
+        public const double updateNoticeDate = 20221120;
         public const string updateNotice =
 
-        "- Fix DLC detection mechanism\n\n" +
-
-        "- Add support for the Skyscrapers and Heart of Korea modder packs\n\n";
+        "- Add support for the Financial Districts DLC\n\n";
 
         public string Name
         {

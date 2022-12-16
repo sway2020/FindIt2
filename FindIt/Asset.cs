@@ -533,6 +533,7 @@ namespace FindIt
                     case ItemClass.SubService.IndustrialOre: findIt2Description += Translations.Translate("FIF_GR_ORI"); break;
                     case ItemClass.SubService.OfficeGeneric: findIt2Description += Translations.Translate("FIF_GR_O"); break;
                     case ItemClass.SubService.OfficeHightech: findIt2Description += Translations.Translate("FIF_GR_ITC"); break;
+                    case ItemClass.SubService.OfficeFinancial: findIt2Description += Translations.Translate("FIF_GR_FD"); break;
                     case ItemClass.SubService.OfficeWallToWall: findIt2Description += Translations.Translate("FIF_GR_OW2W"); break;
                     default: findIt2Description += Translations.Translate("FIF_PROP_UNS"); break;
                 }

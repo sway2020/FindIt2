@@ -71,8 +71,13 @@ namespace FindIt.GUI
                 prefab.m_Thumbnail == "thumb_Path Rock Small 02" ||
                 prefab.m_Thumbnail == "thumb_Path Rock Small 03" ||
                 prefab.m_Thumbnail == "thumb_Path Rock Small 04" ||
-                // Plazas & Promenades DLC growables have missing variations
-                (((prefab.m_requiredExpansion & SteamHelper.ExpansionBitMask.PlazasAndPromenades) != 0) && !prefab.m_isCustomContent && (asset?.assetType == Asset.AssetType.Growable))
+                // Plazas & Promenades and Financial Districts DLC growables have missing variations
+                ((( prefab.m_requiredExpansion & SteamHelper.ExpansionBitMask.PlazasAndPromenades) != 0 || 
+                   (prefab.m_requiredExpansion & SteamHelper.ExpansionBitMask.FinancialDistricts) != 0) &&
+                   !prefab.m_isCustomContent && (asset?.assetType == Asset.AssetType.Growable)) ||
+                // Financial Districts DLC props have missing variations
+                (((prefab.m_requiredExpansion & SteamHelper.ExpansionBitMask.FinancialDistricts) != 0) &&
+                   !prefab.m_isCustomContent && (asset?.assetType == Asset.AssetType.Prop))
                 ))
             {
                 AddThumbnailVariantsInAtlas(prefab);
