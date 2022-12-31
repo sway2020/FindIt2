@@ -13,9 +13,9 @@ namespace FindIt
     public class ModInfo : IUserMod
     {
         public const string version = "2.9.3";
-        public const bool isBeta = false;
+        public const bool isBeta = true;
         public const bool debug = false;
-        public const double updateNoticeDate = 20221120;
+        public const double updateNoticeDate = 20221216;
         public const string updateNotice =
 
         "- Add support for the Financial Districts DLC\n\n";
