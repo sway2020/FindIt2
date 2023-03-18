@@ -769,6 +769,9 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack12: return "Seaside Resorts Content Creator Pack by Gèze";
                     case SteamHelper.ModderPackBitMask.Pack13: return "Skyscrapers Content Creator Pack by Feindbold";
                     case SteamHelper.ModderPackBitMask.Pack14: return "Heart of Korea Content Creator Pack by ELVIS";
+                    case SteamHelper.ModderPackBitMask.Pack16: return "Shopping Malls Content Creator Pack by KingLeno";
+                    case SteamHelper.ModderPackBitMask.Pack17: return "Sports Venues Content Creator Pack by BadPeanut";
+                    case SteamHelper.ModderPackBitMask.Pack18: return "Africa in Miniature Content Creator Pack by Setonji \"Prince Set\" Hotonu";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "Unknown Modder Pack";
                 }
@@ -822,6 +825,9 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack12: return "SeasideResortsIcon";
                     case SteamHelper.ModderPackBitMask.Pack13: return "ProjectSkyscrapersIcon";
                     case SteamHelper.ModderPackBitMask.Pack14: return "HeartOfKoreaIcon";
+                    case SteamHelper.ModderPackBitMask.Pack16: return "ModderPack16Icon";
+                    case SteamHelper.ModderPackBitMask.Pack17: return "ModderPack17Icon";
+                    case SteamHelper.ModderPackBitMask.Pack18: return "ModderPack18Icon";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "ToolbarIconHelp";
                 }

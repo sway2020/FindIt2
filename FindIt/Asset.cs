@@ -631,6 +631,9 @@ namespace FindIt
                 case SteamHelper.ModderPackBitMask.Pack12: author = "Gèze"; break;
                 case SteamHelper.ModderPackBitMask.Pack13: author = "Feindbold"; break;
                 case SteamHelper.ModderPackBitMask.Pack14: author = "ELVIS"; break;
+                case SteamHelper.ModderPackBitMask.Pack16: author = "KingLeno"; break;
+                case SteamHelper.ModderPackBitMask.Pack17: author = "BadPeanut"; break;
+                case SteamHelper.ModderPackBitMask.Pack18: author = "Setonji \"Prince Set\" Hotonu"; break;
                 default: return false;
             }
             return true;
