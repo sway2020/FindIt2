@@ -1,4 +1,4 @@
-﻿// modified from SamsamTS's original Find It mod
+﻿// modif"-ied from SamsamTS's original Find It mod
 // https://github.com/SamsamTS/CS-FindIt
 
 using CitiesHarmony.API;
@@ -12,13 +12,21 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.3";
+        public const string version = "2.9.4";
         public const bool isBeta = true;
         public const bool debug = false;
-        public const double updateNoticeDate = 20221216;
+        public const double updateNoticeDate = 20230318;
         public const string updateNotice =
 
-        "- Add support for the Financial Districts DLC\n\n";
+        "- Add support for new content creator packs:\n" +
+        "      Shopping Malls\n" +
+        "      Sports Venues\n" +
+        "      Africa in Miniature\n\n" +
+
+        "- Update EManagersLib.API.dll (for 1.16.1 EML fix)\n\n" +
+
+        "- Update translations\n\n";
+        
 
         public string Name
         {

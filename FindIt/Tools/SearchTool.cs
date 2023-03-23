@@ -815,6 +815,21 @@ namespace FindIt
                         if ((modderPack & SteamHelper.ModderPackBitMask.Pack14) == 0) return false;
                         break;
                     }
+                case UIFilterExtraPanel.DLCDropDownOptions.ShoppingMalls:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack16) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.SportsVenues:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack17) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.AfricainMiniature:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack18) == 0) return false;
+                        break;
+                    }
                 default:
                     break;
             }
