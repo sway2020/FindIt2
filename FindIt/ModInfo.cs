@@ -12,12 +12,18 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.4";
-        public const bool isBeta = true;
+        public const string version = "2.9.4-2";
+        public const bool isBeta = false;
         public const bool debug = false;
-        public const double updateNoticeDate = 20230318;
+        public const double updateNoticeDate = 20230324;
         public const string updateNotice =
+        
+        "Fix compatibility issues with some mods after 1.16.1:\n" +
+        "    Procedural Objects\n" +
+        "    Non-Terrain Conforming Props\n" +
+        "    Tree & Vehicle Props 2\n\n" + 
 
+        "2.9.4: \n" + 
         "- Add support for new content creator packs:\n" +
         "      Shopping Malls\n" +
         "      Sports Venues\n" +
