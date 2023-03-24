@@ -18,10 +18,10 @@ namespace FindIt
                 GameObject gameLogicObject = GameObject.Find("Logic_ProceduralObjects");
                 if (gameLogicObject == null) return;
 
-                Type ProceduralObjectsLogicType = Type.GetType("ProceduralObjects.ProceduralObjectsLogic");
+                Type ProceduralObjectsLogicType = Type.GetType("ProceduralObjects.ProceduralObjectsLogic, ProceduralObjects");
                 if (ProceduralObjectsLogicType == null) return;
 
-                Type ProceduralObjectType = Type.GetType("ProceduralObjects.Classes.ProceduralObject");
+                Type ProceduralObjectType = Type.GetType("ProceduralObjects.Classes.ProceduralObject, ProceduralObjects");
                 if (ProceduralObjectType == null) return;
 
                 Component logic = gameLogicObject.GetComponent("ProceduralObjectsLogic");
@@ -78,8 +78,8 @@ namespace FindIt
                     return Vector3.zero;
                 }
 
-                Type ProceduralObjectsLogicType = Type.GetType("ProceduralObjects.ProceduralObjectsLogic");
-                Type ProceduralObjectType = Type.GetType("ProceduralObjects.Classes.ProceduralObject");
+                Type ProceduralObjectsLogicType = Type.GetType("ProceduralObjects.ProceduralObjectsLogic, ProceduralObjects");
+                Type ProceduralObjectType = Type.GetType("ProceduralObjects.Classes.ProceduralObject, ProceduralObjects");
                 Component logic = gameLogicObject.GetComponent("ProceduralObjectsLogic");
                 object poList = ProceduralObjectsLogicType.GetField("proceduralObjects").GetValue(logic);
 
