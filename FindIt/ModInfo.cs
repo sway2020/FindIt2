@@ -7,32 +7,25 @@ using ColossalFramework.UI;
 using ICities;
 using System;
 using System.IO;
+using static AssetImporterAssetTemplate;
 
 namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.4-2";
-        public const bool isBeta = false;
+        public const string version = "2.9.5";
+        public const bool isBeta = true;
         public const bool debug = false;
-        public const double updateNoticeDate = 20230324;
+        public const double updateNoticeDate = 20230507;
         public const string updateNotice =
-        
-        "Fix compatibility issues with some mods after 1.16.1:\n" +
-        "    Procedural Objects\n" +
-        "    Non-Terrain Conforming Props\n" +
-        "    Tree & Vehicle Props 2\n\n" + 
 
-        "2.9.4: \n" + 
-        "- Add support for new content creator packs:\n" +
-        "      Shopping Malls\n" +
-        "      Sports Venues\n" +
-        "      Africa in Miniature\n\n" +
+        "- Update filters for new DLC and CCP:\n" +
+        "   Hotels & Retreats DLC\n" +
+        "   Railroads of Japan CCP by Kaminogi\n" +
+        "   Industrial Revolution CCP by Avanya\n" +
+        "   Brooklyn & Queens CCP by Prosper\n\n" +
 
-        "- Update EManagersLib.API.dll (for 1.16.1 EML fix)\n\n" +
-
-        "- Update translations\n\n";
-        
+        "- Fix the District Style filter to include Africa in Miniature CCP District Style";
 
         public string Name
         {

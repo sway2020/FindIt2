@@ -700,6 +700,11 @@ namespace FindIt
                         if ((expansion & SteamHelper.ExpansionBitMask.GreenCities) == 0) return false;
                         break;
                     }
+                case UIFilterExtraPanel.DLCDropDownOptions.HotelsNRetreats:
+                    {
+                        if ((expansion & SteamHelper.ExpansionBitMask.Hotel) == 0) return false;
+                        break;
+                    }
                 case UIFilterExtraPanel.DLCDropDownOptions.Parklife:
                     {
                         if ((expansion & SteamHelper.ExpansionBitMask.Parks) == 0) return false;
@@ -828,6 +833,21 @@ namespace FindIt
                 case UIFilterExtraPanel.DLCDropDownOptions.AfricainMiniature:
                     {
                         if ((modderPack & SteamHelper.ModderPackBitMask.Pack18) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.RailroadsOfJapan:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack19) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.IndustrialRevolution:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack20) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.BrooklynNQueens:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack21) == 0) return false;
                         break;
                     }
                 default:

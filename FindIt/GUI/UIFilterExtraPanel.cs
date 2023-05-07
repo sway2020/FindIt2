@@ -98,6 +98,7 @@ namespace FindIt.GUI
             Campus,
             FinancialDistricts,
             GreenCities,
+            HotelsNRetreats,
             Industries,
             MassTransit,
             NaturalDisasters,
@@ -121,6 +122,9 @@ namespace FindIt.GUI
             ShoppingMalls,
             SportsVenues,
             AfricainMiniature,
+            RailroadsOfJapan,
+            IndustrialRevolution,
+            BrooklynNQueens,
             Concerts,
             DeluxeUpgrade,
             MatchDay,
@@ -476,6 +480,7 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Campus DLC");
             dlcDropDownMenu.AddItem("Financial Districts DLC");
             dlcDropDownMenu.AddItem("Green Cities DLC");
+            dlcDropDownMenu.AddItem("Hotels & Retreats DLC");
             dlcDropDownMenu.AddItem("Industries DLC");
             dlcDropDownMenu.AddItem("Mass Transit DLC");
             dlcDropDownMenu.AddItem("Natural Disasters DLC");
@@ -499,6 +504,9 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Shopping Malls CCP");
             dlcDropDownMenu.AddItem("Sports Venues CCP");
             dlcDropDownMenu.AddItem("Africa in Miniature CCP");
+            dlcDropDownMenu.AddItem("Railroads of Japan CCP");
+            dlcDropDownMenu.AddItem("Industrial Revolution CCP");
+            dlcDropDownMenu.AddItem("Brooklyn & Queens CCP");
             dlcDropDownMenu.AddItem("Concerts DLC");
             dlcDropDownMenu.AddItem("Deluxe Upgrade Pack");
             dlcDropDownMenu.AddItem("Match Day DLC");
@@ -629,6 +637,9 @@ namespace FindIt.GUI
                 else if (style.Name.Equals(DistrictStyle.kModderPack11StyleName)) list.Add("Mid-Century Modern (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack14StyleName)) list.Add("Heart of Korea (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack16StyleName)) list.Add("Shopping Malls (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack18StyleName)) list.Add("Africa in Miniature (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack20StyleName)) list.Add("Industrial Revolution (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack21StyleName)) list.Add("Brooklyn & Queens (" + style.Count.ToString() + ")");
                 else list.Add(style.FullName + " (" + style.Count.ToString() + ")");
             }
 

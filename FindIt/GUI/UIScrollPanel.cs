@@ -736,6 +736,7 @@ namespace FindIt.GUI
                     case SteamHelper.ExpansionBitMask.NaturalDisasters: return "Natural Disasters DLC";
                     case SteamHelper.ExpansionBitMask.InMotion: return "Mass Transit DLC";
                     case SteamHelper.ExpansionBitMask.GreenCities: return "Green Cities DLC";
+                    case SteamHelper.ExpansionBitMask.Hotel: return "Hotels & Retreats DLC";
                     case SteamHelper.ExpansionBitMask.Parks: return "Parklife DLC";
                     case SteamHelper.ExpansionBitMask.PlazasAndPromenades: return "Plazas & Promenades DLC";
                     case SteamHelper.ExpansionBitMask.Industry: return "Industries DLC";
@@ -772,6 +773,9 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack16: return "Shopping Malls Content Creator Pack by KingLeno";
                     case SteamHelper.ModderPackBitMask.Pack17: return "Sports Venues Content Creator Pack by BadPeanut";
                     case SteamHelper.ModderPackBitMask.Pack18: return "Africa in Miniature Content Creator Pack by Setonji \"Prince Set\" Hotonu";
+                    case SteamHelper.ModderPackBitMask.Pack19: return "Railroads of Japan Content Creator Pack by Ryuichi Kaminogi";
+                    case SteamHelper.ModderPackBitMask.Pack20: return "Industrial Revolution Content Creator Pack by Avanya";
+                    case SteamHelper.ModderPackBitMask.Pack21: return "Brooklyn & Queens Content Creator Pack by Prosper";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "Unknown Modder Pack";
                 }
@@ -793,6 +797,7 @@ namespace FindIt.GUI
                     case SteamHelper.ExpansionBitMask.NaturalDisasters: return "NaturalDisastersIcon";
                     case SteamHelper.ExpansionBitMask.InMotion: return "MassTransitIcon";
                     case SteamHelper.ExpansionBitMask.GreenCities: return "GreenCitiesIcon";
+                    case SteamHelper.ExpansionBitMask.Hotel: return "HotelsIcon";
                     case SteamHelper.ExpansionBitMask.Parks: return "ParkLifeIcon";
                     case SteamHelper.ExpansionBitMask.PlazasAndPromenades: return "PlazasPromenadesIcon";
                     case SteamHelper.ExpansionBitMask.Industry: return "IndustriesIcon";
@@ -828,6 +833,9 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack16: return "ModderPack16Icon";
                     case SteamHelper.ModderPackBitMask.Pack17: return "ModderPack17Icon";
                     case SteamHelper.ModderPackBitMask.Pack18: return "ModderPack18Icon";
+                    case SteamHelper.ModderPackBitMask.Pack19: return "ModderPack19Icon";
+                    case SteamHelper.ModderPackBitMask.Pack20: return "ModderPack20Icon";
+                    case SteamHelper.ModderPackBitMask.Pack21: return "ModderPack21Icon";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "ToolbarIconHelp";
                 }
