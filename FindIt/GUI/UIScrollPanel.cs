@@ -776,6 +776,7 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack19: return "Railroads of Japan Content Creator Pack by Ryuichi Kaminogi";
                     case SteamHelper.ModderPackBitMask.Pack20: return "Industrial Revolution Content Creator Pack by Avanya";
                     case SteamHelper.ModderPackBitMask.Pack21: return "Brooklyn & Queens Content Creator Pack by Prosper";
+                    case SteamHelper.ModderPackBitMask.Pack22: return "Mountain Village Content Creator Pack by Tomas13TO";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "Unknown Modder Pack";
                 }
@@ -836,6 +837,7 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack19: return "ModderPack19Icon";
                     case SteamHelper.ModderPackBitMask.Pack20: return "ModderPack20Icon";
                     case SteamHelper.ModderPackBitMask.Pack21: return "ModderPack21Icon";
+                    case SteamHelper.ModderPackBitMask.Pack22: return "ModderPack22Icon";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "ToolbarIconHelp";
                 }

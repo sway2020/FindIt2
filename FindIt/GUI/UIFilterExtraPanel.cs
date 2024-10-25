@@ -125,6 +125,7 @@ namespace FindIt.GUI
             RailroadsOfJapan,
             IndustrialRevolution,
             BrooklynNQueens,
+            MountainVillage,
             Concerts,
             DeluxeUpgrade,
             MatchDay,
@@ -507,6 +508,7 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Railroads of Japan CCP");
             dlcDropDownMenu.AddItem("Industrial Revolution CCP");
             dlcDropDownMenu.AddItem("Brooklyn & Queens CCP");
+            dlcDropDownMenu.AddItem("Mountain Village CCP");
             dlcDropDownMenu.AddItem("Concerts DLC");
             dlcDropDownMenu.AddItem("Deluxe Upgrade Pack");
             dlcDropDownMenu.AddItem("Match Day DLC");

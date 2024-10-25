@@ -850,6 +850,11 @@ namespace FindIt
                         if ((modderPack & SteamHelper.ModderPackBitMask.Pack21) == 0) return false;
                         break;
                     }
+                case UIFilterExtraPanel.DLCDropDownOptions.MountainVillage:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack22) == 0) return false;
+                        break;
+                    }
                 default:
                     break;
             }

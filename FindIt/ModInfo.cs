@@ -13,19 +13,14 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.5";
+        public const string version = "2.9.6";
         public const bool isBeta = true;
         public const bool debug = false;
-        public const double updateNoticeDate = 20230507;
+        public const double updateNoticeDate = 20241025;
         public const string updateNotice =
 
-        "- Update filters for new DLC and CCP:\n" +
-        "   Hotels & Retreats DLC\n" +
-        "   Railroads of Japan CCP by Kaminogi\n" +
-        "   Industrial Revolution CCP by Avanya\n" +
-        "   Brooklyn & Queens CCP by Prosper\n\n" +
-
-        "- Fix the District Style filter to include Africa in Miniature CCP District Style";
+        "- Update filters for new CCP:\n" +
+        "   Mountain Village CCP by Tomas13TO";
 
         public string Name
         {
