@@ -126,6 +126,11 @@ namespace FindIt.GUI
             IndustrialRevolution,
             BrooklynNQueens,
             MountainVillage,
+            MapPack3,
+            Countryside,
+            EmergingDowntown,
+            ShopsOfShibuya,
+            MapPack4,
             Concerts,
             DeluxeUpgrade,
             MatchDay,
@@ -509,6 +514,11 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Industrial Revolution CCP");
             dlcDropDownMenu.AddItem("Brooklyn & Queens CCP");
             dlcDropDownMenu.AddItem("Mountain Village CCP");
+            dlcDropDownMenu.AddItem("Map Pack 3 CCP");
+            dlcDropDownMenu.AddItem("Countryside CCP");
+            dlcDropDownMenu.AddItem("Emerging Downtown CCP");
+            dlcDropDownMenu.AddItem("Shops of Shibuya CCP");
+            dlcDropDownMenu.AddItem("Map Pack 4 CCP");
             dlcDropDownMenu.AddItem("Concerts DLC");
             dlcDropDownMenu.AddItem("Deluxe Upgrade Pack");
             dlcDropDownMenu.AddItem("Match Day DLC");
@@ -642,6 +652,9 @@ namespace FindIt.GUI
                 else if (style.Name.Equals(DistrictStyle.kModderPack18StyleName)) list.Add("Africa in Miniature (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack20StyleName)) list.Add("Industrial Revolution (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack21StyleName)) list.Add("Brooklyn & Queens (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack24StyleName)) list.Add("Countryside (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack25StyleName)) list.Add("Emerging Downtown (" + style.Count.ToString() + ")");
+                else if (style.Name.Equals(DistrictStyle.kModderPack26StyleName)) list.Add("Shops of Shibuya (" + style.Count.ToString() + ")");
                 else list.Add(style.FullName + " (" + style.Count.ToString() + ")");
             }
 

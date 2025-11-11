@@ -855,6 +855,31 @@ namespace FindIt
                         if ((modderPack & SteamHelper.ModderPackBitMask.Pack22) == 0) return false;
                         break;
                     }
+                case UIFilterExtraPanel.DLCDropDownOptions.MapPack3:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack23) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.Countryside:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack24) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.EmergingDowntown:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack25) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.ShopsOfShibuya:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack26) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.MapPack4:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack27) == 0) return false;
+                        break;
+                    }
                 default:
                     break;
             }

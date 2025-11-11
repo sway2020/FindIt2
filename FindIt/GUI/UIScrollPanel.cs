@@ -777,6 +777,11 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack20: return "Industrial Revolution Content Creator Pack by Avanya";
                     case SteamHelper.ModderPackBitMask.Pack21: return "Brooklyn & Queens Content Creator Pack by Prosper";
                     case SteamHelper.ModderPackBitMask.Pack22: return "Mountain Village Content Creator Pack by Tomas13TO";
+                    case SteamHelper.ModderPackBitMask.Pack23: return "Map Pack 3 Content Creator Pack by TeddyRadko";
+                    case SteamHelper.ModderPackBitMask.Pack24: return "Countryside Content Creator Pack by cbudd";
+                    case SteamHelper.ModderPackBitMask.Pack25: return "Emerging Downtown Content Creator Pack by Smilies";
+                    case SteamHelper.ModderPackBitMask.Pack26: return "Shops of Shibuya Content Creator Pack by Stop it D";
+                    case SteamHelper.ModderPackBitMask.Pack27: return "Map Pack 4 Content Creator Pack by Uncle Ron";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "Unknown Modder Pack";
                 }
@@ -838,6 +843,11 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack20: return "ModderPack20Icon";
                     case SteamHelper.ModderPackBitMask.Pack21: return "ModderPack21Icon";
                     case SteamHelper.ModderPackBitMask.Pack22: return "ModderPack22Icon";
+                    case SteamHelper.ModderPackBitMask.Pack23: return "ModderPack23Icon";
+                    case SteamHelper.ModderPackBitMask.Pack24: return "ModderPack24Icon";
+                    case SteamHelper.ModderPackBitMask.Pack25: return "ModderPack25Icon";
+                    case SteamHelper.ModderPackBitMask.Pack26: return "ModderPack26Icon";
+                    case SteamHelper.ModderPackBitMask.Pack27: return "ModderPack27Icon";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "ToolbarIconHelp";
                 }

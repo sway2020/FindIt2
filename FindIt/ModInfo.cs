@@ -13,14 +13,13 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.6";
+        public const string version = "2.9.7";
         public const bool isBeta = true;
         public const bool debug = false;
-        public const double updateNoticeDate = 20241025;
+        public const double updateNoticeDate = 20251111;
         public const string updateNotice =
 
-        "- Update filters for new CCP:\n" +
-        "   Mountain Village CCP by Tomas13TO";
+        "- Updated to include recent content creator packs";
 
         public string Name
         {
