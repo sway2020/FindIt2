@@ -747,6 +747,7 @@ namespace FindIt.GUI
                     case SteamHelper.ExpansionBitMask.Football: return "Match Day DLC";
                     case SteamHelper.ExpansionBitMask.Football2345: return "Stadiums: European Club Pack DLC";
                     case SteamHelper.ExpansionBitMask.MusicFestival: return "Concerts DLC";
+                    case SteamHelper.ExpansionBitMask.RacesAndParades: return "Race Day DLC";
                     case SteamHelper.ExpansionBitMask.None: return "";
                     default: return "Unknown Expansion";
                 }
@@ -782,6 +783,8 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack25: return "Emerging Downtown Content Creator Pack by Smilies";
                     case SteamHelper.ModderPackBitMask.Pack26: return "Shops of Shibuya Content Creator Pack by Stop it D";
                     case SteamHelper.ModderPackBitMask.Pack27: return "Map Pack 4 Content Creator Pack by Uncle Ron";
+                    case SteamHelper.ModderPackBitMask.Pack28: return "Iconic Brutalism Content Creator Pack by Brum";
+                    case SteamHelper.ModderPackBitMask.Pack29: return "Renewed History Content Creator Pack by Cristolisto";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "Unknown Modder Pack";
                 }
@@ -814,6 +817,7 @@ namespace FindIt.GUI
                     case SteamHelper.ExpansionBitMask.Football: return "MDIcon";
                     case SteamHelper.ExpansionBitMask.Football2345: return "StadiumsDLCIcon";
                     case SteamHelper.ExpansionBitMask.MusicFestival: return "ConcertsIcon";
+                    case SteamHelper.ExpansionBitMask.RacesAndParades: return "RaceDayIcon";
                     case SteamHelper.ExpansionBitMask.None: return "";
                     default: return "ToolbarIconHelp";
                 }
@@ -848,6 +852,8 @@ namespace FindIt.GUI
                     case SteamHelper.ModderPackBitMask.Pack25: return "ModderPack25Icon";
                     case SteamHelper.ModderPackBitMask.Pack26: return "ModderPack26Icon";
                     case SteamHelper.ModderPackBitMask.Pack27: return "ModderPack27Icon";
+                    case SteamHelper.ModderPackBitMask.Pack28: return "ModderPack28Icon";
+                    case SteamHelper.ModderPackBitMask.Pack29: return "ModderPack29Icon";
                     case SteamHelper.ModderPackBitMask.None: return "";
                     default: return "ToolbarIconHelp";
                 }

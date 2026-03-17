@@ -755,6 +755,11 @@ namespace FindIt
                         if ((expansion & SteamHelper.ExpansionBitMask.MusicFestival) == 0) return false;
                         break;
                     }
+                case UIFilterExtraPanel.DLCDropDownOptions.RaceDay:
+                    {
+                        if ((expansion & SteamHelper.ExpansionBitMask.RacesAndParades) == 0) return false;
+                        break;
+                    }
                 case UIFilterExtraPanel.DLCDropDownOptions.ArtDeco:
                     {
                         if ((modderPack & SteamHelper.ModderPackBitMask.Pack1) == 0) return false;
@@ -878,6 +883,16 @@ namespace FindIt
                 case UIFilterExtraPanel.DLCDropDownOptions.MapPack4:
                     {
                         if ((modderPack & SteamHelper.ModderPackBitMask.Pack27) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.IconicBrutalism:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack28) == 0) return false;
+                        break;
+                    }
+                case UIFilterExtraPanel.DLCDropDownOptions.RenewedHistory:
+                    {
+                        if ((modderPack & SteamHelper.ModderPackBitMask.Pack29) == 0) return false;
                         break;
                     }
                 default:

@@ -13,13 +13,16 @@ namespace FindIt
 {
     public class ModInfo : IUserMod
     {
-        public const string version = "2.9.7";
+        public const string version = "2.9.8";
         public const bool isBeta = true;
         public const bool debug = false;
-        public const double updateNoticeDate = 20251111;
+        public const double updateNoticeDate = 20260317;
         public const string updateNotice =
 
-        "- Updated to include recent content creator packs";
+        "- Update filters for new DLC and CCP:\n" +
+        "   Race Day DLC\n" +
+        "   Iconic Brutalism CCP by Cristolisto\n" +
+        "   Renewed History CCP by Brum\n";
 
         public string Name
         {
