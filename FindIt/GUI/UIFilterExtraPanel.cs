@@ -135,7 +135,10 @@ namespace FindIt.GUI
             DeluxeUpgrade,
             MatchDay,
             PearlsFromTheEast,
-            Stadiums
+            Stadiums,
+            RaceDay,
+            IconicBrutalism,
+            RenewedHistory
         }
 
         public override void Start()
@@ -524,6 +527,9 @@ namespace FindIt.GUI
             dlcDropDownMenu.AddItem("Match Day DLC");
             dlcDropDownMenu.AddItem("Pearls from the East DLC");
             dlcDropDownMenu.AddItem("Stadiums: European Club Pack DLC");
+            dlcDropDownMenu.AddItem("Race Day DLC");
+            dlcDropDownMenu.AddItem("Iconic Brutalism CCP");
+            dlcDropDownMenu.AddItem("Renewed History CCP");
             dlcDropDownMenu.isVisible = false;
             dlcDropDownMenu.selectedIndex = 0;
             dlcDropDownMenu.relativePosition = new Vector3(optionDropDownMenu.relativePosition.x + optionDropDownMenu.width + 50, 5);
@@ -655,6 +661,7 @@ namespace FindIt.GUI
                 else if (style.Name.Equals(DistrictStyle.kModderPack24StyleName)) list.Add("Countryside (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack25StyleName)) list.Add("Emerging Downtown (" + style.Count.ToString() + ")");
                 else if (style.Name.Equals(DistrictStyle.kModderPack26StyleName)) list.Add("Shops of Shibuya (" + style.Count.ToString() + ")");
+               
                 else list.Add(style.FullName + " (" + style.Count.ToString() + ")");
             }
 
